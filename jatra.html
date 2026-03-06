@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Explore Jatras (pilgrimages) organized by PrabhuPremi Trust - spiritual journeys to holy sites with community and devotion.">
+    <title>Jatra | PrabhuPremi Trust</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Open+Sans:wght@400;600;700&family=Rubik:wght@400;500;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/pages.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container navbar__container">
+            <a href="index.html" class="navbar__logo">
+                <img src="assets/images/logo.png" alt="PrabhuPremi Trust Logo" class="navbar__logo-img">
+            </a>
+
+            <ul class="navbar__menu">
+                <li><a href="about.html" class="navbar__link" data-i18n="nav_about">About Us</a></li>
+                <li><a href="activities.html" class="navbar__link" data-i18n="nav_activities">Activities</a></li>
+                <li><a href="jatra.html" class="navbar__link active" data-i18n="nav_jatra">Jatra</a></li>
+                <li><a href="events.html" class="navbar__link" data-i18n="nav_events">Events</a></li>
+                <li><a href="gallery.html" class="navbar__link" data-i18n="nav_gallery">Gallery</a></li>
+                <li><a href="contact.html" class="navbar__link" data-i18n="nav_contact">Contact Us</a></li>
+                <li><a href="donate.html" class="btn btn--primary btn--sm" data-i18n="nav_donate">Donate Now</a></li>
+            </ul>
+
+            <button class="navbar__toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Language Toggle (Integrated) -->
+            <div class="navbar__lang">
+                <button class="lang-toggle__btn active" data-lang="en">EN</button>
+                <button class="lang-toggle__btn" data-lang="gu">ગુજ</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Nasarna Style Internal Header -->
+    <section class="page-header--nasarna">
+        <div class="container">
+            <h1 class="page-title" data-i18n="jatra_title">Tirtha Yatra</h1>
+            <p class="page-subtitle" data-i18n="jatra_subtitle">Sacred Journeys to the Heart of Jain Tirtha.</p>
+        </div>
+    </section>
+
+    <!-- Significance Section -->
+    <section class="section jatra-significance">
+        <div class="container">
+            <div class="jatra-significance__grid">
+                <div class="jatra-significance__content animate-on-scroll">
+                    <span class="section-header__tag" data-i18n="jatra_sig_tag">Significance</span>
+                    <h2 class="section-header__title" data-i18n="jatra_sig_title">The Importance of <span
+                            class="text-gradient">Yatra</span></h2>
+                    <p class="section-text" data-i18n="jatra_sig_desc">
+                        In Jain tradition, a yatra (pilgrimage) is a spiritual journey to holy sites — tirthas —
+                        where great souls achieved liberation. Walking these paths, we tread in the footsteps
+                        of the enlightened ones, accumulating punya (spiritual merit) for our soul's journey.
+                    </p>
+
+                    <div class="jatra-details-section">
+                        <h3 class="jatra-subtitle" data-i18n="jatra_chovihar_title">🙏 Chovihar Chhath</h3>
+                        <p class="section-text" data-i18n="jatra_chovihar_desc">
+                            Many yatris observe <strong>Chovihar</strong> (complete fast without water after sunset)
+                            during the pilgrimage. This austere practice, often combined with <strong>Ekasana</strong>
+                            (one meal a day), purifies the body and sharpens spiritual focus during darshan.
+                        </p>
+                    </div>
+
+                    <div class="jatra-details-section">
+                        <h3 class="jatra-subtitle" data-i18n="jatra_saat_kshetra_title">🛕 Saat Kshetra Yatra</h3>
+                        <p class="section-text" data-i18n="jatra_saat_kshetra_desc">
+                            The most revered is the <strong>Saat Kshetra Yatra</strong> — pilgrimage to the 7 holy
+                            Jain sites: <em>Palitana, Girnar, Shatrunjay, Taranga, Abu, Kesariyaji,</em> and
+                            <em>Ranakpur</em>. Completing this yatra is considered highly auspicious for moksha.
+                        </p>
+                    </div>
+
+                    <div class="jatra-quote glass animate-reveal">
+                        <p data-i18n="jatra_quote">"When feet walk with devotion, the soul flies towards liberation."
+                        </p>
+                    </div>
+                </div>
+                <div class="jatra-significance__visual animate-on-scroll">
+                    <div class="jatra-visual-image">
+                        <img src="assets/images/jain_pilgrimage_temple.jpg" alt="Jain temple pilgrimage"
+                            onerror="this.parentElement.innerHTML='<div class=\'jatra-visual-card glass\'><div class=\'visual-symbol-large\'>🛕</div><div class=\'visual-badge\' data-i18n=\'jatra_visual_badge\'>Tirtha Kshetra</div></div>';">
+                        <div class="visual-badge" data-i18n="jatra_visual_badge">Tirtha Kshetra</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Jatra Journey Map -->
+    <section class="section section--dark journey-section">
+        <div class="container">
+            <!-- Hero Image for Path of Yatri -->
+            <div class="journey-hero-image animate-on-scroll">
+                <img src="assets/images/palitana_pilgrims.jpg"
+                    alt="Pilgrims climbing the holy steps of Palitana's Shatrunjay Hill"
+                    onerror="this.style.display='none'; this.parentElement.classList.add('journey-hero-placeholder');">
+                <div class="journey-hero-overlay">
+                    <span class="journey-hero-caption" data-i18n="jatra_hero_caption">Pilgrims ascending Shatrunjay
+                        Hill, Palitana</span>
+                </div>
+            </div>
+
+            <div class="section-header animate-on-scroll">
+                <span class="section-header__tag" data-i18n="jatra_path_tag">Spiritual Journey</span>
+                <h2 class="section-header__title" data-i18n="jatra_path_title">The Path of a <span
+                        class="text-gradient">Yatri</span></h2>
+                <p class="section-header__text" data-i18n="jatra_path_desc">
+                    Every yatra is a progressive spiritual journey. Follow the milestones of your transformation.
+                </p>
+            </div>
+
+
+            <div class="journey-timeline animate-on-scroll">
+                <div class="journey-node glass animate-zoom-in">
+                    <div class="node-number">01</div>
+                    <div class="node-icon">📝</div>
+                    <h4 data-i18n="jatra_node1_title">Sankalp</h4>
+                    <p data-i18n="jatra_node1_desc">The spiritual intent to embark.</p>
+                </div>
+                <div class="journey-node glass animate-zoom-in animate-delay-100">
+                    <div class="node-number">02</div>
+                    <div class="node-icon">🚶</div>
+                    <h4 data-i18n="jatra_node2_title">Prasthan</h4>
+                    <p data-i18n="jatra_node2_desc">The mindful departure.</p>
+                </div>
+                <div class="journey-node glass animate-zoom-in animate-delay-200">
+                    <div class="node-number">03</div>
+                    <div class="node-icon">🛕</div>
+                    <h4 data-i18n="jatra_node3_title">Darshan</h4>
+                    <p data-i18n="jatra_node3_desc">The divine vision.</p>
+                </div>
+                <div class="journey-node glass animate-zoom-in animate-delay-300">
+                    <div class="node-number">04</div>
+                    <div class="node-icon">🤝</div>
+                    <h4 data-i18n="jatra_node4_title">Seva</h4>
+                    <p data-i18n="jatra_node4_desc">The act of compassion.</p>
+                </div>
+                <div class="journey-node glass animate-zoom-in animate-delay-400">
+                    <div class="node-number">05</div>
+                    <div class="node-icon">✨</div>
+                    <h4 data-i18n="jatra_node5_title">Anand</h4>
+                    <p data-i18n="jatra_node5_desc">The spiritual bliss.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Upcoming Jatras -->
+    <section class="section jatra-listing">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-header__tag" data-i18n="jatra_upcoming_tag">Upcoming Spiritual Journeys</span>
+                <h2 class="section-header__title" data-i18n="jatra_upcoming_title">Join Our Next <span
+                        class="text-gradient">Tirtha Yatra</span></h2>
+                <p class="section-header__text" data-i18n="jatra_upcoming_desc">Reserve your place in our upcoming
+                    spiritual pilgrimages and experience
+                    divine transformation.</p>
+            </div>
+
+            <div class="jatra-featured-grid">
+                <!-- Upcoming Sammed Shikharji -->
+                <div class="program-card jatra-card upcoming glass animate-on-scroll">
+                    <div class="jatra-card__badge-special" data-i18n="jatra_card1_badge">Coming Soon: Winter 2026</div>
+                    <div class="program-card__icon-nasarna">🏔️</div>
+                    <h3 class="program-card__title" data-i18n="jatra_card1_title">Sammed Shikharji Mahatirth</h3>
+                    <p class="program-card__text" data-i18n="jatra_card1_desc">Embark on the ultimate pilgrimage to the
+                        hill where 20 Tirthankaras
+                        attained Nirvana. A journey of deep silence, prayer, and spiritual peak experience.</p>
+
+                    <div class="jatra-details">
+                        <div class="jatra-detail-item">
+                            <span>📅</span> <strong data-i18n="label_duration">Duration:</strong> <span
+                                data-i18n="jatra_card1_duration">10 Days</span>
+                        </div>
+                        <div class="jatra-detail-item">
+                            <span>📍</span> <strong data-i18n="label_destination">Destination:</strong> <span
+                                data-i18n="jatra_card1_destination">Jharkhand, India</span>
+                        </div>
+                        <div class="jatra-detail-item">
+                            <span>🤝</span> <strong data-i18n="label_inclusions">Inclusions:</strong> <span
+                                data-i18n="jatra_card1_inclusions">Satvik Meals, Doli, Transport</span>
+                        </div>
+                    </div>
+
+                    <div class="jatra-card__actions">
+                        <button onclick="openRsvpModal('Sammed Shikharji Mahatirth', 'Winter 2026', 'jatra')"
+                            class="btn btn--primary btn--sm" data-i18n="btn_rsvp_jatra">RSVP for Jatra</button>
+                        <a href="donate.html" class="btn btn--outline btn--sm" data-i18n="btn_donate_jatra">Donate for
+                            Yatra</a>
+                    </div>
+                </div>
+
+                <!-- Upcoming Palitana Navanu -->
+                <div class="program-card jatra-card upcoming glass animate-on-scroll animate-delay-100">
+                    <div class="jatra-card__badge-special" data-i18n="jatra_card2_badge">Planned: Late 2026</div>
+                    <div class="program-card__icon-nasarna">🛕</div>
+                    <h3 class="program-card__title" data-i18n="jatra_card2_title">Palitana Navanu Yatra</h3>
+                    <p class="program-card__text" data-i18n="jatra_card2_desc">Perform the holy 99-time climb (Navanu)
+                        of Shatrunjay Hill. A
+                        discipline of focus, endurance, and unmatched devotional joy.</p>
+
+                    <div class="jatra-details">
+                        <div class="jatra-detail-item">
+                            <span>📅</span> <strong data-i18n="label_duration">Duration:</strong> <span
+                                data-i18n="jatra_card2_duration">15 Days</span>
+                        </div>
+                        <div class="jatra-detail-item">
+                            <span>📍</span> <strong data-i18n="label_destination">Destination:</strong> <span
+                                data-i18n="jatra_card2_destination">Gujarat, India</span>
+                        </div>
+                        <div class="jatra-detail-item">
+                            <span>📿</span> <strong data-i18n="label_focus">Focus:</strong> <span
+                                data-i18n="jatra_card2_focus">Bhakti & Anushthan</span>
+                        </div>
+                    </div>
+
+                    <div class="jatra-card__actions">
+                        <button onclick="openRsvpModal('Palitana Navanu Yatra', 'Late 2026', 'jatra')"
+                            class="btn btn--primary btn--sm" data-i18n="btn_rsvp_jatra">RSVP
+                            for Jatra</button>
+                        <a href="donate.html" class="btn btn--outline btn--sm" data-i18n="btn_donate_jatra">Donate for
+                            Yatra</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- What's Included -->
+    <section class="section section--dark included-section">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-header__tag" data-i18n="jatra_anubhav_tag">Yatra Anubhav</span>
+                <h2 class="section-header__title" data-i18n="jatra_anubhav_title">What Every <span
+                        class="text-gradient">Jatra Includes</span></h2>
+                <p class="section-header__text" data-i18n="jatra_anubhav_desc">A complete spiritual experience rooted in
+                    Jain traditions</p>
+            </div>
+
+            <div class="pillars__grid included-modern-grid">
+                <!-- Row 1 -->
+                <div class="pillar-card glass-glow animate-on-scroll">
+                    <div class="pillar-card__icon-nasarna">🙏</div>
+                    <h3 class="pillar-card__title" data-i18n="jatra_pillar1_title">Pravachan & Satsang</h3>
+                    <p class="pillar-card__text" data-i18n="jatra_pillar1_desc">Daily spiritual discourses and
+                        devotional gatherings led by learned
+                        Acharyas and Sadhus.</p>
+                </div>
+
+                <div class="pillar-card glass-glow animate-on-scroll animate-delay-100">
+                    <div class="pillar-card__icon-nasarna">🧘</div>
+                    <h3 class="pillar-card__title" data-i18n="jatra_pillar2_title">Samayik Sessions</h3>
+                    <p class="pillar-card__text" data-i18n="jatra_pillar2_desc">Guided 48-minute meditation sessions for
+                        inner peace and spiritual
+                        reflection.</p>
+                </div>
+
+                <div class="pillar-card glass-glow animate-on-scroll animate-delay-200">
+                    <div class="pillar-card__icon-nasarna">📿</div>
+                    <h3 class="pillar-card__title" data-i18n="jatra_pillar3_title">Pratikraman</h3>
+                    <p class="pillar-card__text" data-i18n="jatra_pillar3_desc">Daily evening ritual of self-reflection
+                        and seeking forgiveness — the
+                        heart of Jain practice.</p>
+                </div>
+
+                <!-- Row 2 -->
+                <div class="pillar-card glass-glow animate-on-scroll">
+                    <div class="pillar-card__icon-nasarna">🍽️</div>
+                    <h3 class="pillar-card__title" data-i18n="jatra_pillar4_title">Satvik Bhojan</h3>
+                    <p class="pillar-card__text" data-i18n="jatra_pillar4_desc">Pure Jain vegetarian meals without root
+                        vegetables, prepared fresh with
+                        devotion daily.</p>
+                </div>
+
+                <div class="pillar-card glass-glow animate-on-scroll animate-delay-100">
+                    <div class="pillar-card__icon-nasarna">🏥</div>
+                    <h3 class="pillar-card__title" data-i18n="jatra_pillar5_title">Doli & Medical Care</h3>
+                    <p class="pillar-card__text" data-i18n="jatra_pillar5_desc">Palki/Doli service for elderly yatris,
+                        with 24/7 medical support and
+                        first aid.</p>
+                </div>
+
+                <div class="pillar-card glass-glow animate-on-scroll animate-delay-200">
+                    <div class="pillar-card__icon-nasarna">👥</div>
+                    <h3 class="pillar-card__title" data-i18n="jatra_pillar6_title">Sangha Community</h3>
+                    <p class="pillar-card__text" data-i18n="jatra_pillar6_desc">Connect with like-minded devotees, build
+                        lasting friendships, and join
+                        our WhatsApp community for updates.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- CTA Section -->
+    <section class="section jatra-cta">
+        <div class="container">
+            <div class="cta-section__card glass animate-on-scroll">
+                <h2 class="section-header__title" data-i18n="jatra_cta_title">Join Our Next <span
+                        class="text-gradient">Jatra</span></h2>
+                <p class="section-text italic" data-i18n="jatra_cta_desc">
+                    Do you feel the pull of the holy Tirthas? Embark on a journey that transcends the physical and
+                    touches the infinite.
+                </p>
+                <div class="cta-section__buttons">
+                    <button onclick="openRsvpModal('', '', 'jatra')" class="btn btn--primary btn--lg"
+                        data-i18n="btn_express_interest">Express
+                        Interest</button>
+                    <a href="donate.html" class="btn btn--secondary btn--lg" data-i18n="btn_offer_seva">Offer Seva</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RSVP Modal -->
+    <div class="rsvp-modal" id="rsvpModal">
+        <div class="rsvp-modal__content">
+            <div class="rsvp-modal__header">
+                <button class="rsvp-modal__close" onclick="closeRsvpModal()">×</button>
+                <h3 class="rsvp-modal__title">🎊 Join Our Journey</h3>
+                <p class="rsvp-modal__event-name" id="rsvpEventNameDisplay">Select an interest</p>
+            </div>
+            <div class="rsvp-modal__body" id="rsvpFormContainer">
+                <!-- Form is dynamically injected by main.js -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <div class="footer__logo">
+                        <img src="assets/images/logo.png" alt="PrabhuPremi Trust Logo" class="footer__logo-img">
+                    </div>
+                    <p data-i18n="footer_about_text">
+                        A faith-inspired NGO rooted in Jain values, dedicated to service, compassion,
+                        and spiritual growth. Give with love. Serve with purpose. Grow with faith.
+                    </p>
+                    <div class="footer__social">
+                        <a href="#" aria-label="Facebook">📘</a>
+                        <a href="#" aria-label="Instagram">📷</a>
+                        <a href="#" aria-label="YouTube">▶️</a>
+                        <a href="#" aria-label="WhatsApp">💬</a>
+                    </div>
+                </div>
+
+                <div class="footer__column">
+                    <h4 data-i18n="nav_quick_links">Quick Links</h4>
+                    <nav class="footer__links">
+                        <a href="about.html" data-i18n="nav_about">About Us</a>
+                        <a href="activities.html" data-i18n="nav_activities">Our Activities</a>
+                        <a href="jatra.html" data-i18n="nav_jatra">Jatra</a>
+                        <a href="events.html" data-i18n="nav_events">Events</a>
+                        <a href="gallery.html" data-i18n="nav_gallery">Gallery</a>
+                    </nav>
+                </div>
+
+                <div class="footer__column">
+                    <h4 data-i18n="nav_get_involved">Get Involved</h4>
+                    <nav class="footer__links">
+                        <a href="donate.html" data-i18n="nav_donate">Donate</a>
+                        <a href="community.html" data-i18n="nav_volunteer">Volunteer</a>
+                        <a href="community.html" data-i18n="nav_member">Become a Member</a>
+                        <a href="contact.html" data-i18n="nav_contact">Contact Us</a>
+                    </nav>
+                </div>
+
+                <div class="footer__column">
+                    <h4 data-i18n="nav_contact_header">Contact</h4>
+                    <div class="footer__links">
+                        <p data-i18n="footer_address">📍 Mumbai, India</p>
+                        <p>📞 <a href="tel:+919876543210" style="color: inherit; text-decoration: none;">+91 98765
+                                43210</a></p>
+                        <p>✉️ <a href="mailto:info@prabhupremitrust.org"
+                                style="color: inherit; text-decoration: none;">info@prabhupremitrust.org</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p class="footer__copyright" data-i18n="footer_copyright">© 2026 PrabhuPremi Trust. All rights reserved.
+                </p>
+                <nav class="footer__legal">
+                    <a href="privacy.html" data-i18n="footer_privacy">Privacy Policy</a>
+                    <a href="terms.html" data-i18n="footer_terms">Terms & Conditions</a>
+                    <a href="donation-policy.html" data-i18n="footer_donation_policy">Donation Policy</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+</body>
+
+</html>

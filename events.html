@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Stay updated with PrabhuPremi Trust events - spiritual gatherings, seva camps, festivals, and community programs.">
+    <title>Events & Calendar | PrabhuPremi Trust</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Open+Sans:wght@400;600;700&family=Rubik:wght@400;500;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/pages.css">
+    <style>
+        /* Featured Event Hero */
+        .featured-event-hero {
+            position: relative;
+            padding: var(--space-16) 0;
+            background: var(--gradient-secondary);
+            overflow: hidden;
+        }
+
+        .featured-event-hero::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(241, 91, 38, 0.2) 0%, transparent 70%);
+            top: -200px;
+            right: -100px;
+            pointer-events: none;
+        }
+
+        .featured-event__grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-12);
+            align-items: center;
+        }
+
+        .featured-event__badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            padding: var(--space-2) var(--space-4);
+            background: var(--color-primary-500);
+            color: white;
+            border-radius: var(--radius-full);
+            font-size: var(--text-sm);
+            font-weight: var(--font-bold);
+            text-transform: uppercase;
+            margin-bottom: var(--space-4);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .featured-event__title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--color-neutral-50);
+            margin-bottom: var(--space-4);
+            line-height: 1.2;
+        }
+
+        .featured-event__desc {
+            font-size: var(--text-lg);
+            color: rgba(255, 255, 255, 0.8);
+            line-height: var(--leading-relaxed);
+            margin-bottom: var(--space-6);
+        }
+
+        .featured-event__details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-6);
+            margin-bottom: var(--space-8);
+        }
+
+        .featured-event__detail {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            color: rgba(255, 255, 255, 0.9);
+            font-size: var(--text-base);
+        }
+
+        .featured-event__detail-icon {
+            font-size: 1.5rem;
+        }
+
+        .featured-event__visual {
+            position: relative;
+        }
+
+        .featured-event__countdown {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-4);
+            text-align: center;
+        }
+
+        .countdown__item {
+            padding: var(--space-6);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-xl);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .countdown__number {
+            font-family: var(--font-heading);
+            font-size: var(--text-4xl);
+            font-weight: var(--font-bold);
+            color: var(--color-primary-400);
+            display: block;
+        }
+
+        .countdown__label {
+            font-size: var(--text-sm);
+            color: rgba(255, 255, 255, 0.7);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Event Categories */
+        .event-categories {
+            padding: var(--space-16) 0;
+            background: var(--color-neutral-50);
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-6);
+        }
+
+        .category-card {
+            position: relative;
+            padding: var(--space-8);
+            background: white;
+            border-radius: var(--radius-xl);
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-base);
+            overflow: hidden;
+        }
+
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+        }
+
+        .category-card--spiritual::before {
+            background: linear-gradient(90deg, #6B4FA0, #8B5CF6);
+        }
+
+        .category-card--seva::before {
+            background: var(--gradient-primary);
+        }
+
+        .category-card--festival::before {
+            background: linear-gradient(90deg, #FFB800, #FF6B00);
+        }
+
+        .category-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .category-card__icon {
+            font-size: 3.5rem;
+            margin-bottom: var(--space-4);
+        }
+
+        .category-card__title {
+            font-size: var(--text-xl);
+            font-weight: var(--font-bold);
+            margin-bottom: var(--space-2);
+            color: var(--color-neutral-800);
+        }
+
+        .category-card__count {
+            font-size: var(--text-sm);
+            color: var(--color-neutral-500);
+        }
+
+        /* Events Filter */
+        .events-filter {
+            display: flex;
+            gap: var(--space-3);
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: var(--space-12);
+        }
+
+        .events-filter__btn {
+            padding: var(--space-3) var(--space-6);
+            background: var(--color-neutral-100);
+            border: none;
+            border-radius: var(--radius-full);
+            font-weight: var(--font-medium);
+            cursor: pointer;
+            transition: all var(--transition-base);
+        }
+
+        .events-filter__btn:hover,
+        .events-filter__btn.active {
+            background: var(--gradient-gold);
+            color: white;
+        }
+
+        /* Events Timeline */
+        .events-timeline {
+            position: relative;
+            padding-left: var(--space-12);
+        }
+
+        .events-timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, var(--color-primary-500), var(--color-secondary-500));
+            border-radius: var(--radius-full);
+        }
+
+        .timeline-event {
+            position: relative;
+            margin-bottom: var(--space-8);
+            padding: var(--space-6);
+            background: white;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-base);
+        }
+
+        .timeline-event::before {
+            content: '';
+            position: absolute;
+            left: calc(-1 * var(--space-12) + 12px);
+            top: var(--space-6);
+            width: 20px;
+            height: 20px;
+            background: var(--color-primary-500);
+            border: 4px solid white;
+            border-radius: 50%;
+            box-shadow: var(--shadow-md);
+        }
+
+        .timeline-event:hover {
+            transform: translateX(10px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .timeline-event__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: var(--space-3);
+            flex-wrap: wrap;
+            gap: var(--space-3);
+        }
+
+        .timeline-event__date {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            padding: var(--space-2) var(--space-4);
+            background: var(--gradient-primary);
+            color: white;
+            border-radius: var(--radius-full);
+            font-size: var(--text-sm);
+            font-weight: var(--font-bold);
+        }
+
+        .timeline-event__category {
+            padding: var(--space-1) var(--space-3);
+            font-size: var(--text-xs);
+            font-weight: var(--font-bold);
+            text-transform: uppercase;
+            border-radius: var(--radius-full);
+        }
+
+        .timeline-event__category--spiritual {
+            background: rgba(107, 79, 160, 0.1);
+            color: #6B4FA0;
+        }
+
+        .timeline-event__category--seva {
+            background: rgba(241, 91, 38, 0.1);
+            color: var(--color-primary-600);
+        }
+
+        .timeline-event__category--festival {
+            background: rgba(255, 184, 0, 0.1);
+            color: #B88600;
+        }
+
+        .timeline-event__title {
+            font-size: var(--text-xl);
+            font-weight: var(--font-bold);
+            color: var(--color-neutral-800);
+            margin-bottom: var(--space-2);
+        }
+
+        .timeline-event__desc {
+            color: var(--color-neutral-600);
+            line-height: var(--leading-relaxed);
+            margin-bottom: var(--space-4);
+        }
+
+        .timeline-event__meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-4);
+            font-size: var(--text-sm);
+            color: var(--color-neutral-500);
+        }
+
+
+
+        /* Past Events Gallery - Improved */
+        .past-events {
+            padding: var(--space-16) 0;
+            background: var(--gradient-secondary);
+        }
+
+        .past-events__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-6);
+        }
+
+        .past-event-card {
+            position: relative;
+            border-radius: var(--radius-2xl);
+            overflow: hidden;
+            cursor: pointer;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: var(--space-6);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .past-event-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.08) 100%);
+            border-color: var(--color-primary-500);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3), 0 0 40px rgba(241, 91, 38, 0.15);
+        }
+
+        .past-event-card__header {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-4);
+            margin-bottom: var(--space-4);
+        }
+
+        .past-event-card__icon {
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-xl);
+            flex-shrink: 0;
+            box-shadow: 0 8px 20px rgba(241, 91, 38, 0.3);
+        }
+
+        .past-event-card__info {
+            flex: 1;
+        }
+
+        .past-event-card__category {
+            display: inline-block;
+            padding: var(--space-1) var(--space-3);
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: var(--radius-full);
+            font-size: var(--text-xs);
+            font-weight: var(--font-bold);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--color-primary-400);
+            margin-bottom: var(--space-2);
+        }
+
+        .past-event-card__title {
+            font-size: var(--text-xl);
+            font-weight: var(--font-bold);
+            color: white;
+            margin-bottom: var(--space-1);
+            line-height: 1.3;
+        }
+
+        .past-event-card__date {
+            font-size: var(--text-sm);
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .past-event-card__body {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: var(--text-sm);
+            line-height: var(--leading-relaxed);
+            margin-bottom: var(--space-4);
+        }
+
+        .past-event-card__stats {
+            display: flex;
+            gap: var(--space-4);
+            padding-top: var(--space-4);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .past-event-card__stat {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            font-size: var(--text-sm);
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .past-event-card__stat-icon {
+            font-size: 1rem;
+        }
+
+        @media (max-width: 1024px) {
+            .past-events__grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Newsletter Section */
+        .events-newsletter {
+            padding: var(--space-16) 0;
+            background: linear-gradient(135deg, var(--color-neutral-50) 0%, rgba(241, 91, 38, 0.05) 100%);
+        }
+
+        .newsletter-box {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+            padding: var(--space-12);
+            background: white;
+            border-radius: var(--radius-2xl);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .newsletter-box__icon {
+            font-size: 4rem;
+            margin-bottom: var(--space-4);
+        }
+
+        .newsletter-box__title {
+            font-size: var(--text-2xl);
+            font-weight: var(--font-bold);
+            margin-bottom: var(--space-3);
+            color: var(--color-neutral-800);
+        }
+
+        .newsletter-box__text {
+            color: var(--color-neutral-600);
+            margin-bottom: var(--space-6);
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: var(--space-3);
+        }
+
+        .newsletter-form__input {
+            flex: 1;
+            padding: var(--space-4);
+            border: 2px solid var(--color-neutral-200);
+            border-radius: var(--radius-lg);
+            font-size: var(--text-base);
+            transition: border-color var(--transition-fast);
+        }
+
+        .newsletter-form__input:focus {
+            outline: none;
+            border-color: var(--color-primary-500);
+        }
+
+        .newsletter-form__btn {
+            padding: var(--space-4) var(--space-8);
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            border-radius: var(--radius-lg);
+            font-weight: var(--font-bold);
+            cursor: pointer;
+            transition: transform var(--transition-fast);
+        }
+
+        .newsletter-form__btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* RSVP Modal */
+        .rsvp-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .rsvp-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .rsvp-modal__content {
+            background: white;
+            border-radius: var(--radius-2xl);
+            width: 90%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: scale(0.9) translateY(20px);
+            transition: transform 0.3s ease;
+        }
+
+        .rsvp-modal.active .rsvp-modal__content {
+            transform: scale(1) translateY(0);
+        }
+
+        .rsvp-modal__header {
+            padding: var(--space-6);
+            background: white;
+            color: var(--color-neutral-800);
+            border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
+            position: relative;
+            border-bottom: 1px solid var(--color-neutral-100);
+        }
+
+        .rsvp-modal__header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
+        }
+
+        .rsvp-modal__close {
+            position: absolute;
+            top: var(--space-4);
+            right: var(--space-4);
+            background: var(--color-neutral-100);
+            border: none;
+            color: var(--color-neutral-600);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .rsvp-modal__close:hover {
+            background: var(--color-primary-100);
+            color: var(--color-primary-600);
+        }
+
+        .rsvp-modal__title {
+            font-size: var(--text-xl);
+            font-weight: var(--font-bold);
+            margin-bottom: var(--space-1);
+            color: var(--color-primary-600);
+        }
+
+        .rsvp-modal__event-name {
+            font-size: var(--text-sm);
+            color: var(--color-neutral-500);
+        }
+
+        .rsvp-modal__body {
+            padding: var(--space-6);
+        }
+
+        .rsvp-form__group {
+            margin-bottom: var(--space-5);
+        }
+
+        .rsvp-form__label {
+            display: block;
+            font-weight: var(--font-semibold);
+            color: var(--color-neutral-700);
+            margin-bottom: var(--space-2);
+        }
+
+        .rsvp-form__input {
+            width: 100%;
+            padding: var(--space-4);
+            border: 2px solid var(--color-neutral-200);
+            border-radius: var(--radius-lg);
+            font-size: var(--text-base);
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .rsvp-form__input:focus {
+            outline: none;
+            border-color: var(--color-primary-400);
+            box-shadow: 0 0 0 4px rgba(241, 91, 38, 0.05);
+            background: white;
+        }
+
+        .rsvp-form__submit {
+            width: 100%;
+            padding: var(--space-4);
+            background: var(--gradient-primary);
+            color: white;
+            border: 2px solid transparent;
+            border-radius: var(--radius-lg);
+            font-size: var(--text-base);
+            font-weight: var(--font-bold);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(241, 91, 38, 0.2);
+        }
+
+        .rsvp-form__submit:hover {
+            background: white;
+            color: var(--color-primary-600);
+            border-color: var(--color-primary-500);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(241, 91, 38, 0.2);
+        }
+
+        .rsvp-success {
+            text-align: center;
+            padding: var(--space-8);
+        }
+
+        .rsvp-success__icon {
+            font-size: 4rem;
+            margin-bottom: var(--space-4);
+        }
+
+        .rsvp-success__title {
+            font-size: var(--text-xl);
+            font-weight: var(--font-bold);
+            color: var(--color-neutral-800);
+            margin-bottom: var(--space-2);
+        }
+
+        .rsvp-success__text {
+            color: var(--color-neutral-600);
+            margin-bottom: var(--space-6);
+        }
+
+        .timeline-event__cta-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: var(--space-5);
+            padding: var(--space-4) var(--space-5);
+            background: linear-gradient(135deg, rgba(241, 91, 38, 0.1) 0%, rgba(225, 168, 60, 0.15) 100%);
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(241, 91, 38, 0.2);
+        }
+
+        .timeline-event__cta-date {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            font-size: var(--text-base);
+            font-weight: var(--font-semibold);
+            color: var(--color-primary-600);
+        }
+
+        .btn--join {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-2);
+            padding: var(--space-2) var(--space-5);
+            background: var(--gradient-primary);
+            color: white;
+            border-radius: var(--radius-full);
+            font-size: var(--text-sm);
+            font-weight: var(--font-bold);
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 4px 15px rgba(241, 91, 38, 0.3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            white-space: nowrap;
+        }
+
+        .btn--join:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 6px 20px rgba(241, 91, 38, 0.5);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .featured-event__grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .featured-event__details {
+                justify-content: center;
+            }
+
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .past-events__grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .events-timeline {
+                padding-left: var(--space-8);
+            }
+
+            .events-timeline::before {
+                left: 10px;
+            }
+
+            .timeline-event::before {
+                left: calc(-1 * var(--space-8) + 2px);
+            }
+
+            .countdown__item {
+                padding: var(--space-4);
+            }
+
+            .countdown__number {
+                font-size: var(--text-2xl);
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container navbar__container">
+            <a href="index.html" class="navbar__logo">
+                <img src="assets/images/logo.png" alt="PrabhuPremi Trust Logo" class="navbar__logo-img">
+            </a>
+
+            <ul class="navbar__menu">
+                <li><a href="about.html" class="navbar__link" data-i18n="nav_about">About Us</a></li>
+                <li><a href="activities.html" class="navbar__link" data-i18n="nav_activities">Activities</a></li>
+                <li><a href="jatra.html" class="navbar__link" data-i18n="nav_jatra">Jatra</a></li>
+                <li><a href="events.html" class="navbar__link active" data-i18n="nav_events">Events</a></li>
+                <li><a href="gallery.html" class="navbar__link" data-i18n="nav_gallery">Gallery</a></li>
+                <li><a href="contact.html" class="navbar__link" data-i18n="nav_contact">Contact Us</a></li>
+                <li><a href="donate.html" class="btn btn--primary btn--sm" data-i18n="nav_donate">Donate Now</a></li>
+            </ul>
+
+            <button class="navbar__toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Language Toggle (Integrated) -->
+            <div class="navbar__lang">
+                <button class="lang-toggle__btn active" data-lang="en">EN</button>
+                <button class="lang-toggle__btn" data-lang="gu">ગુજ</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Nasarna Style Internal Header -->
+    <section class="page-header--nasarna">
+        <div class="container">
+            <h1 class="page-title" data-i18n="events_title">Events & Calendar</h1>
+            <p class="page-subtitle" data-i18n="events_subtitle">Celebrate Devotion, Foster Community.</p>
+        </div>
+    </section>
+
+    <!-- Featured Upcoming Event -->
+    <section class="featured-event-hero">
+        <div class="container">
+            <div class="featured-event__grid">
+                <div class="featured-event__content">
+                    <div class="featured-event__badge" data-i18n="event_badge_featured">
+                        <span>🔥</span> Featured Event
+                    </div>
+                    <h2 class="featured-event__title" data-i18n="featured_event_title">Mahavir Janma Kalyanak 2026</h2>
+                    <p class="featured-event__desc" data-i18n="featured_event_desc">
+                        Join us for the grandest celebration of Lord Mahavir's birth anniversary.
+                        Experience divine processions, spiritual discourses, and communal feasts
+                        with thousands of devotees from across the nation.
+                    </p>
+                    <div class="featured-event__details">
+                        <div class="featured-event__detail">
+                            <span class="featured-event__detail-icon">📅</span>
+                            <span data-i18n="featured_event_date">April 14, 2026</span>
+                        </div>
+                        <div class="featured-event__detail">
+                            <span class="featured-event__detail-icon">📍</span>
+                            <span data-i18n="featured_event_loc">Shantinath Temple, Mumbai</span>
+                        </div>
+                        <div class="featured-event__detail">
+                            <span class="featured-event__detail-icon">⏰</span>
+                            <span data-i18n="featured_event_time">7:00 AM onwards</span>
+                        </div>
+                    </div>
+                    <button onclick="openRsvpModal('Mahavir Janma Kalyanak', 'Apr 14, 2026', 'events')"
+                        class="btn btn--primary btn--lg" data-i18n="event_register_btn">Register Now</button>
+                </div>
+                <div class="featured-event__visual">
+                    <div class="featured-event__countdown">
+                        <div class="countdown__item">
+                            <span class="countdown__number" id="days">69</span>
+                            <span class="countdown__label" data-i18n="countdown_days">Days</span>
+                        </div>
+                        <div class="countdown__item">
+                            <span class="countdown__number" id="hours">12</span>
+                            <span class="countdown__label" data-i18n="countdown_hours">Hours</span>
+                        </div>
+                        <div class="countdown__item">
+                            <span class="countdown__number" id="minutes">34</span>
+                            <span class="countdown__label" data-i18n="countdown_mins">Minutes</span>
+                        </div>
+                        <div class="countdown__item">
+                            <span class="countdown__number" id="seconds">56</span>
+                            <span class="countdown__label" data-i18n="countdown_secs">Seconds</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Categories -->
+    <section class="event-categories">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-header__tag" data-i18n="section_event_cat_tag">Explore</span>
+                <h2 class="section-header__title" data-i18n="event_cat_title">Event <span
+                        class="text-gradient">Categories</span></h2>
+                <p class="section-header__text" data-i18n="event_cat_subtitle">
+                    From spiritual gatherings to community seva, discover events that resonate with your soul.
+                </p>
+            </div>
+
+            <div class="categories-grid">
+                <div class="category-card category-card--spiritual animate-on-scroll">
+                    <div class="category-card__icon">🕉️</div>
+                    <h3 class="category-card__title" data-i18n="cat_spiritual_title">Spiritual Gatherings</h3>
+                    <p class="category-card__count" data-i18n="cat_spiritual_desc">Pravachans, meditation sessions, and
+                        spiritual retreats</p>
+                </div>
+                <div class="category-card category-card--seva animate-on-scroll animate-delay-100">
+                    <div class="category-card__icon">🤲</div>
+                    <h3 class="category-card__title" data-i18n="cat_seva_title">Social Seva</h3>
+                    <p class="category-card__count" data-i18n="cat_seva_desc">Medical camps, food drives, and community
+                        service</p>
+                </div>
+                <div class="category-card category-card--festival animate-on-scroll animate-delay-200">
+                    <div class="category-card__icon">🎊</div>
+                    <h3 class="category-card__title" data-i18n="cat_festivals_title">Festivals</h3>
+                    <p class="category-card__count" data-i18n="cat_festivals_desc">Paryushan, Mahavir Jayanti, and
+                        sacred celebrations</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upcoming Events Timeline -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-header__tag" data-i18n="section_calendar_tag">Upcoming</span>
+                <h2 class="section-header__title" data-i18n="calendar_title">Events <span
+                        class="text-gradient">Timeline</span></h2>
+                <p class="section-header__text" data-i18n="calendar_subtitle">
+                    Mark your calendars for these upcoming spiritual and service events.
+                </p>
+            </div>
+
+            <div class="events-timeline">
+                <div class="timeline-event animate-on-scroll" data-category="spiritual">
+                    <div class="timeline-event__header">
+                        <span class="timeline-event__category timeline-event__category--spiritual"
+                            data-i18n="cat_spiritual_title">Spiritual</span>
+                    </div>
+                    <h3 class="timeline-event__title" data-i18n="event1_title_timeline">Paryushan Mahaparva</h3>
+                    <p class="timeline-event__desc" data-i18n="event1_desc_timeline">
+                        Join us for the most auspicious time of self-reflection, forgiveness, and spiritual growth
+                        with daily pravachans and samayik sessions.
+                    </p>
+                    <div class="timeline-event__meta">
+                        <span data-i18n="event1_loc_timeline">📍 Main Temple Hall</span>
+                        <span data-i18n="event1_time_timeline">⏰ 6:00 AM - 9:00 PM</span>
+                        <span data-i18n="event1_all_timeline">👥 Open to all</span>
+                    </div>
+                    <div class="timeline-event__cta-bar">
+                        <span class="timeline-event__cta-date" data-i18n="event1_date_timeline">📅 Feb 15, 2026</span>
+                        <button class="btn--join"
+                            onclick="openRsvpModal('Paryushan Mahaparva', 'Feb 15, 2026', 'events')"
+                            data-i18n="btn_join_celebration">🎊 Join
+                            Celebration</button>
+                    </div>
+                </div>
+
+                <div class="timeline-event animate-on-scroll animate-delay-100" data-category="seva">
+                    <div class="timeline-event__header">
+                        <span class="timeline-event__category timeline-event__category--seva"
+                            data-i18n="cat_seva_btn">Social Seva</span>
+                    </div>
+                    <h3 class="timeline-event__title" data-i18n="event2_title_timeline">Mega Medical Camp Drive</h3>
+                    <p class="timeline-event__desc" data-i18n="event2_desc_timeline">
+                        Free health check-ups, dental care, and medicine distribution for underprivileged
+                        families in tribal regions. Doctors and volunteers needed!
+                    </p>
+                    <div class="timeline-event__meta">
+                        <span data-i18n="event2_loc_timeline">📍 Community Center, Vadodara</span>
+                        <span data-i18n="event2_time_timeline">⏰ 9:00 AM - 4:00 PM</span>
+                        <span data-i18n="event2_docs_timeline">🩺 50+ Doctors Expected</span>
+                    </div>
+                    <div class="timeline-event__cta-bar">
+                        <span class="timeline-event__cta-date" data-i18n="event2_date_timeline">📅 Feb 28, 2026</span>
+                        <button class="btn--join"
+                            onclick="openRsvpModal('Mega Medical Camp Drive', 'Feb 28, 2026', 'events')"
+                            data-i18n="btn_join_celebration">🎊
+                            Join Celebration</button>
+                    </div>
+                </div>
+
+                <div class="timeline-event animate-on-scroll animate-delay-200" data-category="festival">
+                    <div class="timeline-event__header">
+                        <span class="timeline-event__category timeline-event__category--festival"
+                            data-i18n="cat_festivals_title">Festival</span>
+                    </div>
+                    <h3 class="timeline-event__title" data-i18n="event3_title_timeline">Mahavir Janma Kalyanak</h3>
+                    <p class="timeline-event__desc" data-i18n="event3_desc_timeline">
+                        Celebrating the birth anniversary of Lord Mahavir with grand processions,
+                        pravachans, rath yatra, and communal bhojans.
+                    </p>
+                    <div class="timeline-event__meta">
+                        <span data-i18n="event3_loc_timeline">📍 Shantinath Temple</span>
+                        <span data-i18n="event3_time_timeline">⏰ 7:00 AM onwards</span>
+                        <span data-i18n="event3_attendees_timeline">🎉 5000+ Expected Attendees</span>
+                    </div>
+                    <div class="timeline-event__cta-bar">
+                        <span class="timeline-event__cta-date" data-i18n="event3_date_timeline">📅 Apr 14, 2026</span>
+                        <button class="btn--join"
+                            onclick="openRsvpModal('Mahavir Janma Kalyanak', 'Apr 14, 2026', 'events')"
+                            data-i18n="btn_join_celebration">🎊
+                            Join Celebration</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Past Events Highlights -->
+    <section class="past-events">
+        <div class="container">
+            <div class="section-header animate-on-scroll" style="color: white;">
+                <span class="section-header__tag" style="background: rgba(255,255,255,0.1); color: white;"
+                    data-i18n="section_memories_tag">Memories</span>
+                <h2 class="section-header__title" style="color: white;" data-i18n="past_events_title">Past Event <span
+                        class="text-gradient">Highlights</span></h2>
+                <p class="section-header__text" style="color: rgba(255,255,255,0.7);" data-i18n="past_events_subtitle">
+                    Relive the beautiful moments from our recent gatherings and celebrations.
+                </p>
+            </div>
+
+            <div class="past-events__grid">
+                <div class="past-event-card animate-on-scroll">
+                    <div class="past-event-card__header">
+                        <div class="past-event-card__icon">🏕️</div>
+                        <div class="past-event-card__info">
+                            <span class="past-event-card__category" data-i18n="cat_spiritual_title">Spiritual</span>
+                            <h4 class="past-event-card__title" data-i18n="past_event1_title">Spiritual Retreat 2025</h4>
+                            <span class="past-event-card__date" data-i18n="past_event1_date">December 15-17, 2025</span>
+                        </div>
+                    </div>
+                    <p class="past-event-card__body" data-i18n="past_event1_desc">
+                        A transformative 3-day retreat with guided meditation, satsang, and self-discovery in the serene
+                        hills of Lonavala.
+                    </p>
+                    <div class="past-event-card__stats">
+                        <div class="past-event-card__stat">
+                            <span class="past-event-card__stat-icon">👥</span>
+                            <span data-i18n="past_event1_attendees">150 Attendees</span>
+                        </div>
+                        <div class="past-event-card__stat">
+                            <span class="past-event-card__stat-icon">📍</span>
+                            <span data-i18n="past_event1_loc">Lonavala</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="past-event-card animate-on-scroll animate-delay-100">
+                    <div class="past-event-card__header">
+                        <div class="past-event-card__icon">🩺</div>
+                        <div class="past-event-card__info">
+                            <span class="past-event-card__category" data-i18n="cat_seva_btn">Seva</span>
+                            <h4 class="past-event-card__title" data-i18n="past_event2_title">Medical Camp Gujarat</h4>
+                            <span class="past-event-card__date" data-i18n="past_event2_date">November 12, 2025</span>
+                        </div>
+                    </div>
+                    <p class="past-event-card__body" data-i18n="past_event2_desc">
+                        Free health screenings and medicine distribution for 500+ families across 5 tribal villages in
+                        Gujarat.
+                    </p>
+                    <div class="past-event-card__stats">
+                        <div class="past-event-card__stat">
+                            <span class="past-event-card__stat-icon">👥</span>
+                            <span data-i18n="past_event2_patients">500+ Patients</span>
+                        </div>
+                        <div class="past-event-card__stat">
+                            <span class="past-event-card__stat-icon">📍</span>
+                            <span data-i18n="past_event2_loc">Vadodara</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="past-event-card animate-on-scroll animate-delay-200">
+                    <div class="past-event-card__header">
+                        <div class="past-event-card__icon">🙏</div>
+                        <div class="past-event-card__info">
+                            <span class="past-event-card__category" data-i18n="cat_festivals_title">Festival</span>
+                            <h4 class="past-event-card__title" data-i18n="past_event3_title">Paryushan 2025</h4>
+                            <span class="past-event-card__date" data-i18n="past_event3_date">August 25 - Sept 2,
+                                2025</span>
+                        </div>
+                    </div>
+                    <p class="past-event-card__body" data-i18n="past_event3_desc">
+                        Eight sacred days of fasting, prayer, and forgiveness culminating in the beautiful Kshamavani
+                        celebration.
+                    </p>
+                    <div class="past-event-card__stats">
+                        <div class="past-event-card__stat">
+                            <span class="past-event-card__stat-icon">👥</span>
+                            <span data-i18n="past_event3_devotees">2000+ Devotees</span>
+                        </div>
+                        <div class="past-event-card__stat">
+                            <span class="past-event-card__stat-icon">📍</span>
+                            <span data-i18n="past_event3_loc">Mumbai</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: var(--space-10);">
+                <a href="gallery.html" class="btn btn--secondary btn--lg" data-i18n="btn_view_full_gallery">View Full
+                    Gallery →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Signup -->
+    <section class="events-newsletter">
+        <div class="container">
+            <div class="newsletter-box animate-on-scroll">
+                <div class="newsletter-box__icon">📬</div>
+                <h3 class="newsletter-box__title" data-i18n="newsletter_title">Never Miss an Event</h3>
+                <p class="newsletter-box__text" data-i18n="newsletter_desc">
+                    Subscribe to our newsletter and get notified about upcoming events,
+                    spiritual gatherings, and seva opportunities.
+                </p>
+                <form class="newsletter-form">
+                    <input type="email" class="newsletter-form__input" placeholder="Enter your email address" required
+                        data-i18n-placeholder="newsletter_placeholder">
+                    <button type="submit" class="newsletter-form__btn"
+                        data-i18n="newsletter_subscribe_btn">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <div class="footer__logo">
+                        <img src="assets/images/logo.png" alt="PrabhuPremi Trust Logo" class="footer__logo-img">
+                    </div>
+                    <p data-i18n="footer_about_text">
+                        A faith-inspired NGO rooted in Jain values, dedicated to service, compassion,
+                        and spiritual growth. Give with love. Serve with purpose. Grow with faith.
+                    </p>
+                    <div class="footer__social">
+                        <a href="#" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h2V1.87c-.32-.04-1.46-.17-2.78-.17-2.78 0-4.72 1.67-4.72 4.8v3h-3v4h3v10h4v-10z" />
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="YouTube">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M23.5 6.19c-.27-1.03-1.08-1.83-2.11-2.11C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.39.58c-1.03.28-1.84 1.08-2.11 2.11-.58 1.89-.58 5.81-.58 5.81s0 3.92.58 5.81c.27 1.03 1.08 1.83 2.11 2.11 1.89.58 9.39.58 9.39.58s7.5 0 9.39-.58c1.03-.28 1.84-1.08 2.11-2.11.58-1.89.58-5.81.58-5.81s0-3.92-.58-5.81zM9.54 15.56V8.45L15.81 12l-6.27 3.56z" />
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="WhatsApp">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.445 0 .081 5.391.079 11.99c0 2.112.552 4.17 1.598 6.01L0 24l6.149-1.613a11.825 11.825 0 005.9 1.564h.005c6.605 0 11.97-5.391 11.972-11.992a11.821 11.821 0 00-3.614-8.472z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer__column">
+                    <h4 data-i18n="nav_quick_links">Quick Links</h4>
+                    <nav class="footer__links">
+                        <a href="about.html" data-i18n="nav_about">About Us</a>
+                        <a href="activities.html" data-i18n="nav_activities">Our Activities</a>
+                        <a href="jatra.html" data-i18n="nav_jatra">Jatra</a>
+                        <a href="events.html" data-i18n="nav_events">Events</a>
+                        <a href="gallery.html" data-i18n="nav_gallery">Gallery</a>
+                    </nav>
+                </div>
+
+                <div class="footer__column">
+                    <h4 data-i18n="nav_get_involved">Get Involved</h4>
+                    <nav class="footer__links">
+                        <a href="donate.html" data-i18n="nav_donate">Donate</a>
+                        <a href="community.html" data-i18n="nav_volunteer">Volunteer</a>
+                        <a href="community.html" data-i18n="nav_member">Become a Member</a>
+                        <a href="contact.html" data-i18n="nav_contact">Contact Us</a>
+                    </nav>
+                </div>
+
+                <div class="footer__column">
+                    <h4 data-i18n="nav_contact_header">Contact</h4>
+                    <div class="footer__links">
+                        <p data-i18n="footer_address">📍 Mumbai, India</p>
+                        <p>📞 <a href="tel:+919876543210" style="color: inherit; text-decoration: none;">+91 98765
+                                43210</a></p>
+                        <p>✉️ <a href="mailto:info@prabhupremitrust.org"
+                                style="color: inherit; text-decoration: none;">info@prabhupremitrust.org</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p class="footer__copyright" data-i18n="footer_copyright">© 2026 PrabhuPremi Trust. All rights reserved.
+                </p>
+                <nav class="footer__legal">
+                    <a href="legal/privacy.html" data-i18n="footer_privacy">Privacy Policy</a>
+                    <a href="legal/terms.html" data-i18n="footer_terms">Terms & Conditions</a>
+                    <a href="legal/donation-policy.html" data-i18n="footer_donation_policy">Donation Policy</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <!-- RSVP Modal -->
+    <div class="rsvp-modal" id="rsvpModal">
+        <div class="rsvp-modal__content">
+            <div class="rsvp-modal__header">
+                <button class="rsvp-modal__close" onclick="closeRsvpModal()">×</button>
+                <h3 class="rsvp-modal__title" data-i18n="modal_join_title">🎊 Join Our Journey</h3>
+                <p class="rsvp-modal__event-name" id="rsvpEventNameDisplay" data-i18n="modal_select_interest">Select an
+                    interest</p>
+            </div>
+            <div class="rsvp-modal__body" id="rsvpFormContainer">
+                <!-- Form is dynamically injected by main.js -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="scripts/main.js"></script>
+    <script>
+        // Countdown Timer for Featured Event (Mahavir Janma Kalyanak - April 14, 2026)
+        function updateCountdown() {
+            const eventDate = new Date('2026-04-14T07:00:00+05:30');
+            const now = new Date();
+            const diff = eventDate - now;
+
+            if (diff > 0) {
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                document.getElementById('days').textContent = days;
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            }
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    </script>
+
+</body>
+
+</html>

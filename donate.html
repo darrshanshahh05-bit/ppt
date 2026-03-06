@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Support PrabhuPremi Trust - Your donation helps fund education, healthcare, spiritual programs, and social welfare initiatives.">
+    <title>Donate | PrabhuPremi Trust</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Open+Sans:wght@400;600;700&family=Rubik:wght@400;500;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/pages.css">
+
+    <!-- Razorpay Checkout -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <!-- jsPDF for Certificate Generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container navbar__container">
+            <a href="index.html" class="navbar__logo">
+                <img src="assets/images/logo.png" alt="PrabhuPremi Trust Logo" class="navbar__logo-img">
+            </a>
+
+            <ul class="navbar__menu">
+                <li><a href="about.html" class="navbar__link">About Us</a></li>
+                <li><a href="activities.html" class="navbar__link">Activities</a></li>
+                <li><a href="jatra.html" class="navbar__link">Jatra</a></li>
+                <li><a href="events.html" class="navbar__link">Events</a></li>
+                <li><a href="gallery.html" class="navbar__link">Gallery</a></li>
+                <li><a href="contact.html" class="navbar__link">Contact Us</a></li>
+                <li><a href="donate.html" class="btn btn--primary btn--sm active">Donate Now</a></li>
+            </ul>
+
+            <button class="navbar__toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Donate Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <span class="page-hero__tag">Support Our Seva</span>
+            <h1 class="page-hero__title">Your Generosity Becomes a <span class="text-orange">Lifeline</span></h1>
+            <p class="page-hero__subtitle">
+                When you donate to PrabhuPremi Trust, your contribution transforms into hope, dignity,
+                and spiritual fulfillment for those in need.
+            </p>
+            <div class="page-hero__divider"></div>
+        </div>
+    </section>
+
+    <!-- How Donations Work -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-header__tag">How It Works</span>
+                <h2 class="section-header__title">Gifts of <span class="text-gradient">Abundance</span></h2>
+                <p class="section-header__text">
+                    Choose the path of service that resonates with your soul, and let your gratitude flow into action.
+                </p>
+            </div>
+
+            <div class="donate-options__grid">
+                <div class="donate-card animate-on-scroll">
+                    <div class="donate-card__icon">🙏</div>
+                    <h3 class="donate-card__title">Vaiyavachh</h3>
+                    <p class="donate-card__text">Serving Jain Sadhus & Sadhvis with devotion and care, helping them on
+                        their spiritual journey.</p>
+                    <a href="#donate-form" class="btn btn--primary">Donate Now</a>
+                </div>
+
+                <div class="donate-card animate-on-scroll animate-delay-100">
+                    <div class="donate-card__icon">🐄</div>
+                    <h3 class="donate-card__title">Jeevdaya</h3>
+                    <p class="donate-card__text">Protecting and feeding voiceless souls in Gaushalas, fostering
+                        compassion towards all living beings.</p>
+                    <a href="#donate-form" class="btn btn--primary">Donate Now</a>
+                </div>
+
+                <div class="donate-card animate-on-scroll animate-delay-200">
+                    <div class="donate-card__icon">📚</div>
+                    <h3 class="donate-card__title">Education</h3>
+                    <p class="donate-card__text">Empowering the future through knowledge and support for underprivileged
+                        students.</p>
+                    <a href="#donate-form" class="btn btn--primary">Donate Now</a>
+                </div>
+
+                <div class="donate-card animate-on-scroll">
+                    <div class="donate-card__icon">🏥</div>
+                    <h3 class="donate-card__title">Medical</h3>
+                    <p class="donate-card__text">Providing healthcare to the needy as a form of Seva, including free
+                        health camps.</p>
+                    <a href="#donate-form" class="btn btn--primary">Donate Now</a>
+                </div>
+
+                <div class="donate-card animate-on-scroll animate-delay-100">
+                    <div class="donate-card__icon">🤝</div>
+                    <h3 class="donate-card__title">Sadharmik Bhakti</h3>
+                    <p class="donate-card__text">Supporting fellow community members with dignity in times of clinical
+                        or financial distress.</p>
+                    <a href="#donate-form" class="btn btn--primary">Donate Now</a>
+                </div>
+
+                <div class="donate-card animate-on-scroll animate-delay-200">
+                    <div class="donate-card__icon">💝</div>
+                    <h3 class="donate-card__title">Anukampa</h3>
+                    <p class="donate-card__text">Compassionate aid for the general public and destitute, uplifting those
+                        in severe hardship.</p>
+                    <a href="#donate-form" class="btn btn--primary">Donate Now</a>
+                </div>
+
+                <div class="donate-card animate-on-scroll" style="border: 2px solid var(--color-primary-400);">
+                    <div class="donate-card__icon">✨</div>
+                    <h3 class="donate-card__title">Sarva Sadharan</h3>
+                    <p class="donate-card__text">General welfare fund — used where it's genuinely needed most, with full
+                        accountability.</p>
+                    <a href="#donate-form" class="btn btn--secondary">Donate Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wall of Fame Section -->
+    <section class="section wall-of-fame">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-header__tag">Wall of Fame</span>
+                <h2 class="section-header__title">Our Distinguished <span class="text-gradient">Donors</span></h2>
+                <p class="section-header__text">Celebrating the generous souls whose contributions sustain our
+                    mission of service.</p>
+            </div>
+
+            <div class="wall-of-fame__grid">
+                <!-- Donor 1 -->
+                <div class="donor-card animate-on-scroll">
+                    <div class="donor-card__image-wrapper">
+                        <img src="assets/images/donor_1.png" alt="Donor Photo" class="donor-card__img">
+                        <div class="donor-card__badges">
+                            <span class="donor-card__badge donor-card__badge--count">Diamond Donor</span>
+                        </div>
+                    </div>
+                    <div class="donor-card__content">
+                        <h3 class="donor-card__name">Mr. Rajesh Shah</h3>
+                        <span class="donor-card__purpose">Vihar Dham Construction</span>
+                        <div class="donor-card__divider"></div>
+                        <div class="donor-card__stats">
+                            <div class="donor-card__amount-box">
+                                <span class="donor-card__amount-label">Donated Amount</span>
+                                <span class="donor-card__amount-value">₹ 5,00,000</span>
+                            </div>
+                            <div class="donor-card__count-box">
+                                <span class="donor-card__count-label">Total Donations</span>
+                                <span class="donor-card__count-value">12 Times</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Donor 2 -->
+                <div class="donor-card animate-on-scroll animate-delay-100">
+                    <div class="donor-card__image-wrapper">
+                        <img src="assets/images/donor_2.png" alt="Donor Photo" class="donor-card__img">
+                        <div class="donor-card__badges">
+                            <span class="donor-card__badge donor-card__badge--count">Pearl Donor</span>
+                        </div>
+                    </div>
+                    <div class="donor-card__content">
+                        <h3 class="donor-card__name">Mrs. Meena Mehta</h3>
+                        <span class="donor-card__purpose">Medical Aid & Camps</span>
+                        <div class="donor-card__divider"></div>
+                        <div class="donor-card__stats">
+                            <div class="donor-card__amount-box">
+                                <span class="donor-card__amount-label">Donated Amount</span>
+                                <span class="donor-card__amount-value">₹ 2,50,000</span>
+                            </div>
+                            <div class="donor-card__count-box">
+                                <span class="donor-card__count-label">Total Donations</span>
+                                <span class="donor-card__count-value">8 Times</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Donor 3 -->
+                <div class="donor-card animate-on-scroll animate-delay-200">
+                    <div class="donor-card__image-wrapper">
+                        <img src="assets/images/donor_3.png" alt="Donor Photo" class="donor-card__img">
+                        <div class="donor-card__badges">
+                            <span class="donor-card__badge donor-card__badge--count">Golden Heart</span>
+                        </div>
+                    </div>
+                    <div class="donor-card__content">
+                        <h3 class="donor-card__name">The Anand Family</h3>
+                        <span class="donor-card__purpose">Educational Scholarships</span>
+                        <div class="donor-card__divider"></div>
+                        <div class="donor-card__stats">
+                            <div class="donor-card__amount-box">
+                                <span class="donor-card__amount-label">Donated Amount</span>
+                                <span class="donor-card__amount-value">₹ 7,50,000</span>
+                            </div>
+                            <div class="donor-card__count-box">
+                                <span class="donor-card__count-label">Total Donations</span>
+                                <span class="donor-card__count-value">15 Times</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donation Form Section -->
+    <section class="section section--dark" id="donate-form">
+        <div class="container">
+            <div class="contact__grid">
+
+                <div class="contact__form animate-on-scroll animate-delay-200">
+                    <h3>Your Kindness, Their Future</h3>
+                    <p class="form-intro" style="color: var(--color-neutral-700);">Sow a seed of compassion today. Every
+                        contribution, no matter the size,
+                        creates a ripple of hope.</p>
+                    <form id="donation-form">
+                        <div class="form-group">
+                            <label class="form-label">Enter Amount in INR (₹)</label>
+                            <input type="text" inputmode="numeric" pattern="[0-9]*" class="form-input"
+                                id="donate-amount" placeholder="Minimum ₹500 — Every rupee makes a difference" required>
+
+
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="donate-category">Select Category</label>
+                            <select class="form-select" id="donate-category">
+                                <option value="sarva-sadharan">Sarva Sadharan (General Welfare) — Use where needed most
+                                </option>
+                                <option value="vaiyavachh">Vaiyavachh — Support the spiritual journey of Sadhus</option>
+                                <option value="jeevdaya">Jeevdaya — Be the voice for the voiceless animals</option>
+                                <option value="education">Education — Empower a child's bright future</option>
+                                <option value="medical">Medical — Provide the gift of healing and health</option>
+                                <option value="sadharmik">Sadharmik Bhakti — Support fellow community members</option>
+                                <option value="anukampa">Anukampa — Direct aid for the destitute and needy</option>
+                            </select>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="donate-name">Full Name *</label>
+                                <input type="text" class="form-input" id="donate-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="donate-email">Email *</label>
+                                <input type="email" class="form-input" id="donate-email" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="donate-phone">Phone</label>
+                                <input type="tel" class="form-input" id="donate-phone">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="donate-pan">PAN (for tax receipt)</label>
+                                <input type="text" class="form-input" id="donate-pan" placeholder="XXXXX0000X">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="donate-message">Message (Optional)</label>
+                            <textarea class="form-textarea" id="donate-message" rows="3"
+                                placeholder="Share why you're donating or any special wishes..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn--primary btn--lg btn--glow" style="width: 100%;">
+                            Share the Blessing 🙏
+                        </button>
+
+                        <p
+                            style="text-align: center; margin-top: var(--space-4); font-size: var(--text-sm); color: var(--color-neutral-500);">
+                            By donating, you agree to our <a href="legal/donation-policy.html"
+                                style="color: var(--color-primary-500);">Donation Policy</a>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <div class="footer__logo">
+                        <img src="assets/images/logo.png" alt="PrabhuPremi Trust Logo" class="footer__logo-img">
+                    </div>
+                    <p>
+                        A faith-inspired NGO rooted in Jain values, dedicated to service, compassion,
+                        and spiritual growth. Give with love. Serve with purpose. Grow with faith.
+                    </p>
+                    <div class="footer__social">
+                        <a href="#" aria-label="Facebook">📘</a>
+                        <a href="#" aria-label="Instagram">📷</a>
+                        <a href="#" aria-label="YouTube">▶️</a>
+                        <a href="#" aria-label="WhatsApp">💬</a>
+                    </div>
+                </div>
+
+                <div class="footer__column">
+                    <h4>Quick Links</h4>
+                    <nav class="footer__links">
+                        <a href="about.html">About Us</a>
+                        <a href="activities.html">Our Activities</a>
+                        <a href="jatra.html">Jatra</a>
+                        <a href="events.html">Events</a>
+                        <a href="gallery.html">Gallery</a>
+                    </nav>
+                </div>
+
+                <div class="footer__column">
+                    <h4>Get Involved</h4>
+                    <nav class="footer__links">
+                        <a href="donate.html">Donate</a>
+                        <a href="community.html">Volunteer</a>
+                        <a href="community.html">Become a Member</a>
+                        <a href="contact.html">Contact Us</a>
+                    </nav>
+                </div>
+
+                <div class="footer__column">
+                    <h4>Contact</h4>
+                    <div class="footer__links">
+                        <p>📍 Mumbai, India</p>
+                        <p>📞 <a href="tel:+919876543210" style="color: inherit; text-decoration: none;">+91 98765
+                                43210</a></p>
+                        <p>✉️ <a href="mailto:info@prabhupremitrust.org"
+                                style="color: inherit; text-decoration: none;">info@prabhupremitrust.org</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p class="footer__copyright">© 2026 PrabhuPremi Trust. All rights reserved.</p>
+                <nav class="footer__legal">
+                    <a href="legal/privacy.html">Privacy Policy</a>
+                    <a href="legal/terms.html">Terms & Conditions</a>
+                    <a href="legal/donation-policy.html">Donation Policy</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <script src="scripts/certificate.js"></script>
+    <script src="scripts/main.js"></script>
+</body>
+
+</html>
