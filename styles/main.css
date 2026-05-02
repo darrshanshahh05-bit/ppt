@@ -335,6 +335,30 @@ body {
   overflow-x: hidden;
 }
 
+/* ===== CUSTOM SCROLLBAR (no layout space) ===== */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(241, 91, 38, 0.35);
+  border-radius: 99px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(241, 91, 38, 0.65);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(241, 91, 38, 0.35) transparent;
+}
+
 img,
 picture,
 video,

@@ -47,6 +47,12 @@
                 <span></span>
                 <span></span>
             </button>
+
+            <!-- Language Toggle (Integrated) -->
+            <div class="navbar__lang">
+                <button class="lang-toggle__btn active" data-lang="en">EN</button>
+                <button class="lang-toggle__btn" data-lang="gu">ગુજ</button>
+            </div>
         </div>
     </nav>
 
@@ -288,10 +294,9 @@
                             Share the Blessing 🙏
                         </button>
 
-                        <p
-                            style="text-align: center; margin-top: var(--space-4); font-size: var(--text-sm); color: var(--color-neutral-500);">
+                        <p style="text-align: center; margin-top: var(--space-4); font-size: var(--text-sm); color: var(--color-neutral-500);">
                             By donating, you agree to our <a href="legal/donation-policy.html"
-                                style="color: var(--color-primary-500);">Donation Policy</a>
+                                style="color: var(--color-primary-500);" data-i18n="footer_donation_policy">Donation Policy</a>
                         </p>
                     </form>
                 </div>
@@ -300,11 +305,330 @@
     </section>
 
 
+    <!-- ===== PAYMENT GATEWAY MODAL ===== -->
+    <div id="paymentModal" style="
+        display: none; position: fixed; inset: 0; z-index: 9999;
+        background: rgba(10,10,20,0.75); backdrop-filter: blur(8px);
+        justify-content: center; align-items: center; padding: 1rem;
+    ">
+        <div style="
+            background: #ffffff; border-radius: 24px; width: 100%; max-width: 480px;
+            box-shadow: 0 32px 80px rgba(0,0,0,0.3); overflow: hidden;
+            animation: slideUp 0.35s cubic-bezier(0.34,1.56,0.64,1);
+        ">
+            <!-- Modal Header -->
+            <div style="
+                background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+                padding: 1.5rem 2rem; display: flex; align-items: center; justify-content: space-between;
+            ">
+                <div style="display:flex; align-items:center; gap:0.75rem;">
+                    <div style="width:40px;height:40px;background:rgba(255,255,255,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;">🔐</div>
+                    <div>
+                        <div style="color:#fff;font-weight:700;font-size:1rem;">Secure Payment</div>
+                        <div style="color:rgba(255,255,255,0.6);font-size:0.75rem;">256-bit SSL Encrypted</div>
+                    </div>
+                </div>
+                <button onclick="closePaymentModal()" style="
+                    background:rgba(255,255,255,0.1);border:none;color:#fff;width:32px;height:32px;
+                    border-radius:50%;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;
+                ">✕</button>
+            </div>
+
+            <!-- Donation Summary Banner -->
+            <div style="
+                background: linear-gradient(90deg, #f15b26 0%, #f97316 100%);
+                padding: 1rem 2rem; display:flex; align-items:center; justify-content:space-between;
+            ">
+                <div style="color:#fff;">
+                    <div style="font-size:0.75rem;opacity:0.85;">Donation Amount</div>
+                    <div style="font-size:1.8rem;font-weight:800;" id="pm-amount-display">₹0</div>
+                </div>
+                <div style="color:#fff;text-align:right;">
+                    <div style="font-size:0.75rem;opacity:0.85;">For</div>
+                    <div style="font-size:0.85rem;font-weight:600;" id="pm-category-display">General Welfare</div>
+                </div>
+            </div>
+
+            <!-- Payment Method Tabs -->
+            <div style="padding: 1.5rem 2rem 0;">
+                <div style="font-size:0.8rem;color:#666;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1rem;">Select Payment Method</div>
+                <div style="display:flex;gap:0.75rem;margin-bottom:1.5rem;">
+                    <button onclick="selectPaymentMethod('card-credit')" id="tab-card-credit" class="pm-tab pm-tab--active" style="flex:1;">💳 Credit Card</button>
+                    <button onclick="selectPaymentMethod('card-debit')" id="tab-card-debit" class="pm-tab" style="flex:1;">🏦 Debit Card</button>
+                    <button onclick="selectPaymentMethod('upi')" id="tab-upi" class="pm-tab" style="flex:1;">📱 UPI</button>
+                </div>
+
+                <!-- Credit / Debit Card Form -->
+                <div id="pm-card-section">
+                    <div style="margin-bottom:1rem;">
+                        <label style="display:block;font-size:0.78rem;font-weight:600;color:#444;margin-bottom:0.4rem;">Card Number</label>
+                        <input id="pm-card-number" type="text" maxlength="19" placeholder="1234  5678  9012  3456"
+                            oninput="formatCardNumber(this)"
+                            style="width:100%;padding:0.75rem 1rem;border:1.5px solid #e5e7eb;border-radius:10px;font-size:1rem;letter-spacing:0.1em;box-sizing:border-box;"
+                        >
+                    </div>
+                    <div style="display:flex;gap:1rem;margin-bottom:1rem;">
+                        <div style="flex:1;">
+                            <label style="display:block;font-size:0.78rem;font-weight:600;color:#444;margin-bottom:0.4rem;">Expiry (MM/YY)</label>
+                            <input id="pm-card-expiry" type="text" maxlength="5" placeholder="MM/YY"
+                                oninput="formatExpiry(this)"
+                                style="width:100%;padding:0.75rem 1rem;border:1.5px solid #e5e7eb;border-radius:10px;font-size:1rem;box-sizing:border-box;"
+                            >
+                        </div>
+                        <div style="flex:1;">
+                            <label style="display:block;font-size:0.78rem;font-weight:600;color:#444;margin-bottom:0.4rem;">CVV</label>
+                            <input id="pm-card-cvv" type="password" maxlength="4" placeholder="•••"
+                                style="width:100%;padding:0.75rem 1rem;border:1.5px solid #e5e7eb;border-radius:10px;font-size:1rem;box-sizing:border-box;"
+                            >
+                        </div>
+                    </div>
+                    <div style="margin-bottom:1.5rem;">
+                        <label style="display:block;font-size:0.78rem;font-weight:600;color:#444;margin-bottom:0.4rem;">Cardholder Name</label>
+                        <input id="pm-card-name" type="text" placeholder="As printed on card"
+                            style="width:100%;padding:0.75rem 1rem;border:1.5px solid #e5e7eb;border-radius:10px;font-size:1rem;box-sizing:border-box;"
+                        >
+                    </div>
+                </div>
+
+                <!-- UPI Section -->
+                <div id="pm-upi-section" style="display:none;">
+                    <div style="
+                        background:#f0fdf4;border:1.5px solid #bbf7d0;border-radius:12px;
+                        padding:1rem;margin-bottom:1rem;text-align:center;
+                    ">
+                        <div style="font-size:2rem;margin-bottom:0.5rem;">📱</div>
+                        <div style="font-weight:600;color:#166534;margin-bottom:0.25rem;">Pay via UPI</div>
+                        <div style="font-size:0.8rem;color:#15803d;">Use any UPI app — GPay, PhonePe, Paytm, BHIM</div>
+                    </div>
+                    <div style="margin-bottom:1rem;">
+                        <label style="display:block;font-size:0.78rem;font-weight:600;color:#444;margin-bottom:0.4rem;">UPI ID</label>
+                        <input id="pm-upi-id" type="text" placeholder="yourname@upi"
+                            style="width:100%;padding:0.75rem 1rem;border:1.5px solid #e5e7eb;border-radius:10px;font-size:1rem;box-sizing:border-box;"
+                        >
+                        <div style="font-size:0.72rem;color:#888;margin-top:0.3rem;">Example: 9876543210@paytm or name@okaxis</div>
+                    </div>
+                    <div style="
+                        background:#fefce8;border:1px solid #fde68a;border-radius:10px;
+                        padding:0.75rem 1rem;font-size:0.8rem;color:#92400e;margin-bottom:1.5rem;
+                    ">⚡ A payment request will be sent to your UPI app. Open your app to approve.</div>
+                </div>
+
+                <!-- Accepted Networks -->
+                <div style="display:flex;gap:0.5rem;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;">
+                    <span style="font-size:0.7rem;color:#888;">Accepted:</span>
+                    <span style="background:#f8f8f8;border:1px solid #e5e7eb;border-radius:6px;padding:2px 8px;font-size:0.7rem;font-weight:700;color:#1a56db;">VISA</span>
+                    <span style="background:#f8f8f8;border:1px solid #e5e7eb;border-radius:6px;padding:2px 8px;font-size:0.7rem;font-weight:700;color:#e32121;">MasterCard</span>
+                    <span style="background:#f8f8f8;border:1px solid #e5e7eb;border-radius:6px;padding:2px 8px;font-size:0.7rem;font-weight:700;color:#00529b;">RuPay</span>
+                    <span style="background:#f8f8f8;border:1px solid #e5e7eb;border-radius:6px;padding:2px 8px;font-size:0.7rem;font-weight:700;color:#3b5998;">Amex</span>
+                    <span style="background:#f8f8f8;border:1px solid #e5e7eb;border-radius:6px;padding:2px 8px;font-size:0.7rem;font-weight:700;color:#5f259f;">PhonePe</span>
+                    <span style="background:#f8f8f8;border:1px solid #e5e7eb;border-radius:6px;padding:2px 8px;font-size:0.7rem;font-weight:700;color:#00a86b;">GPay</span>
+                </div>
+
+                <!-- Pay Button -->
+                <button id="pm-pay-btn" onclick="processPayment()" style="
+                    width:100%;padding:1rem;background:linear-gradient(135deg,#f15b26,#f97316);
+                    color:#fff;border:none;border-radius:12px;font-size:1.05rem;font-weight:700;
+                    cursor:pointer;letter-spacing:0.02em;transition:all 0.2s;
+                    box-shadow:0 4px 20px rgba(241,91,38,0.4);margin-bottom:1rem;
+                " onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''"
+                >🙏 Donate Now</button>
+
+                <div style="display:flex;align-items:center;justify-content:center;gap:0.4rem;padding-bottom:1.5rem;">
+                    <span style="font-size:0.7rem;color:#999;">🔒 Secured by</span>
+                    <span style="font-size:0.75rem;font-weight:700;color:#555;">Razorpay</span>
+                    <span style="font-size:0.7rem;color:#999;">· PCI DSS Compliant</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Processing Overlay -->
+    <div id="paymentProcessing" style="
+        display:none;position:fixed;inset:0;z-index:10000;
+        background:rgba(10,10,20,0.85);backdrop-filter:blur(12px);
+        justify-content:center;align-items:center;flex-direction:column;gap:1.5rem;
+    ">
+        <div style="
+            width:80px;height:80px;border:4px solid rgba(255,255,255,0.2);
+            border-top-color:#f15b26;border-radius:50%;
+            animation:spin 0.9s linear infinite;
+        "></div>
+        <div style="color:#fff;font-size:1.1rem;font-weight:600;">Processing your donation...</div>
+        <div style="color:rgba(255,255,255,0.6);font-size:0.85rem;">Please do not close this window</div>
+    </div>
+
+    <!-- Payment Success Modal -->
+    <div id="paymentSuccess" style="
+        display:none;position:fixed;inset:0;z-index:10001;
+        background:rgba(10,10,20,0.85);backdrop-filter:blur(12px);
+        justify-content:center;align-items:center;padding:1rem;
+    ">
+        <div style="
+            background:#fff;border-radius:24px;width:100%;max-width:420px;
+            padding:3rem 2rem;text-align:center;
+            box-shadow:0 32px 80px rgba(0,0,0,0.3);
+            animation:slideUp 0.35s cubic-bezier(0.34,1.56,0.64,1);
+        ">
+            <div style="font-size:4rem;margin-bottom:1rem;">🎉</div>
+            <h3 style="font-size:1.5rem;font-weight:800;color:#1a1a2e;margin-bottom:0.5rem;">Donation Successful!</h3>
+            <p style="color:#666;margin-bottom:1.5rem;">Your generous contribution has been received. A receipt will be sent to your email shortly. 🙏</p>
+            <div id="success-summary" style="
+                background:#fdf4ff;border:1px solid #e9d5ff;border-radius:12px;
+                padding:1rem;margin-bottom:1.5rem;text-align:left;
+            "></div>
+            <button onclick="closeSuccessModal()" style="
+                width:100%;padding:1rem;background:linear-gradient(135deg,#f15b26,#f97316);
+                color:#fff;border:none;border-radius:12px;font-size:1rem;font-weight:700;cursor:pointer;
+            ">Continue 🙏</button>
+        </div>
+    </div>
+
+    <style>
+    @keyframes slideUp {
+        from { opacity:0; transform:translateY(40px) scale(0.95); }
+        to   { opacity:1; transform:translateY(0) scale(1); }
+    }
+    @keyframes spin {
+        to { transform: rotate(360deg); }
+    }
+    .pm-tab {
+        padding: 0.6rem 0.5rem;
+        border: 1.5px solid #e5e7eb;
+        border-radius: 10px;
+        background: #f9fafb;
+        color: #555;
+        font-size: 0.78rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+    .pm-tab--active {
+        border-color: #f15b26;
+        background: #fff5f0;
+        color: #f15b26;
+    }
+    </style>
+
+    <script>
+    let donationData = {};
+    let currentPaymentMethod = 'card-credit';
+
+    // Intercept donation form submit
+    document.getElementById('donation-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const amount  = document.getElementById('donate-amount').value.trim();
+        const name    = document.getElementById('donate-name').value.trim();
+        const email   = document.getElementById('donate-email').value.trim();
+        const phone   = document.getElementById('donate-phone').value.trim();
+        const pan     = document.getElementById('donate-pan').value.trim();
+        const cat     = document.getElementById('donate-category');
+        const catText = cat.options[cat.selectedIndex].text;
+
+        if (!amount || isNaN(amount) || parseInt(amount) < 500) {
+            alert('Please enter a valid amount (minimum ₹500).');
+            return;
+        }
+        if (!name) { alert('Please enter your full name.'); return; }
+        if (!email || !email.includes('@')) { alert('Please enter a valid email.'); return; }
+
+        donationData = { amount, name, email, phone, pan, category: catText };
+
+        // Populate modal
+        document.getElementById('pm-amount-display').textContent   = '₹' + parseInt(amount).toLocaleString('en-IN');
+        document.getElementById('pm-category-display').textContent = catText.split('—')[0].trim();
+
+        // Show modal
+        const modal = document.getElementById('paymentModal');
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    });
+
+    function closePaymentModal() {
+        document.getElementById('paymentModal').style.display = 'none';
+        document.body.style.overflow = '';
+    }
+
+    function selectPaymentMethod(method) {
+        currentPaymentMethod = method;
+        ['card-credit','card-debit','upi'].forEach(m => {
+            document.getElementById('tab-' + m).classList.remove('pm-tab--active');
+        });
+        document.getElementById('tab-' + method).classList.add('pm-tab--active');
+
+        document.getElementById('pm-card-section').style.display = (method !== 'upi') ? 'block' : 'none';
+        document.getElementById('pm-upi-section').style.display  = (method === 'upi')  ? 'block' : 'none';
+    }
+
+    function formatCardNumber(input) {
+        let v = input.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+        let parts = v.match(/.{1,4}/g) || [];
+        input.value = parts.join('  ').substr(0, 19);
+    }
+
+    function formatExpiry(input) {
+        let v = input.value.replace(/\D/g, '').substr(0, 4);
+        if (v.length >= 3) v = v.substr(0,2) + '/' + v.substr(2);
+        input.value = v;
+    }
+
+    function processPayment() {
+        // Basic validation
+        if (currentPaymentMethod !== 'upi') {
+            const num  = document.getElementById('pm-card-number').value.replace(/\s/g,'');
+            const exp  = document.getElementById('pm-card-expiry').value;
+            const cvv  = document.getElementById('pm-card-cvv').value;
+            const cname= document.getElementById('pm-card-name').value.trim();
+            if (num.length < 15) { alert('Please enter a valid card number.'); return; }
+            if (exp.length < 5)  { alert('Please enter a valid expiry date.'); return; }
+            if (cvv.length < 3)  { alert('Please enter a valid CVV.'); return; }
+            if (!cname)          { alert('Please enter the cardholder name.'); return; }
+        } else {
+            const upiId = document.getElementById('pm-upi-id').value.trim();
+            if (!upiId || !upiId.includes('@')) { alert('Please enter a valid UPI ID (e.g. name@upi).'); return; }
+        }
+
+        // Hide payment modal, show processing
+        document.getElementById('paymentModal').style.display     = 'none';
+        const proc = document.getElementById('paymentProcessing');
+        proc.style.display = 'flex';
+
+        // Simulate processing (2.5s), then show success
+        setTimeout(function() {
+            proc.style.display = 'none';
+            showSuccess();
+        }, 2500);
+    }
+
+    function showSuccess() {
+        const d = donationData;
+        document.getElementById('success-summary').innerHTML =
+            '<div style="display:flex;justify-content:space-between;margin-bottom:0.5rem;"><span style="color:#666;font-size:0.85rem;">Donor</span><span style="font-weight:700;font-size:0.85rem;">' + d.name + '</span></div>' +
+            '<div style="display:flex;justify-content:space-between;margin-bottom:0.5rem;"><span style="color:#666;font-size:0.85rem;">Amount</span><span style="font-weight:800;color:#f15b26;font-size:0.9rem;">₹' + parseInt(d.amount).toLocaleString('en-IN') + '</span></div>' +
+            '<div style="display:flex;justify-content:space-between;"><span style="color:#666;font-size:0.85rem;">Category</span><span style="font-weight:600;font-size:0.85rem;">' + d.category.split('—')[0].trim() + '</span></div>';
+
+        const succ = document.getElementById('paymentSuccess');
+        succ.style.display = 'flex';
+    }
+
+    function closeSuccessModal() {
+        document.getElementById('paymentSuccess').style.display = 'none';
+        document.body.style.overflow = '';
+        document.getElementById('donation-form').reset();
+    }
+
+    // Close modal on backdrop click
+    document.getElementById('paymentModal').addEventListener('click', function(e) {
+        if (e.target === this) closePaymentModal();
+    });
+    </script>
+
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer__grid">
-                <div class="footer__brand">
+                                <div class="footer__brand">
                     <div class="footer__logo">
                         <img src="assets/images/logo.png" alt="PrabhuPremi Trust Logo" class="footer__logo-img">
                     </div>
@@ -313,10 +637,19 @@
                         and spiritual growth. Give with love. Serve with purpose. Grow with faith.
                     </p>
                     <div class="footer__social">
-                        <a href="#" aria-label="Facebook">📘</a>
-                        <a href="#" aria-label="Instagram">📷</a>
-                        <a href="#" aria-label="YouTube">▶️</a>
+                        <a href="https://www.instagram.com/prabhupremitrust/" target="_blank" rel="noopener" aria-label="Instagram" class="social--instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        </a>
+                        <a href="https://www.youtube.com/@PrabhuPremiTrust" target="_blank" rel="noopener" aria-label="YouTube" class="social--youtube"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
                         <a href="#" aria-label="WhatsApp">💬</a>
+                    </div>
+                    <div style="margin-top:0.75rem;">
+                        <a href="https://www.instagram.com/prabhupremitrust/" target="_blank" rel="noopener"
+                           style="display:inline-flex;align-items:center;gap:0.4rem;font-size:0.78rem;color:rgba(255,255,255,0.6);text-decoration:none;transition:color 0.2s;"
+                           onmouseover="this.style.color='#f09433'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                            @prabhupremitrust
+                        </a>
                     </div>
                 </div>
 
@@ -344,21 +677,20 @@
                 <div class="footer__column">
                     <h4>Contact</h4>
                     <div class="footer__links">
-                        <p>📍 Mumbai, India</p>
-                        <p>📞 <a href="tel:+919876543210" style="color: inherit; text-decoration: none;">+91 98765
-                                43210</a></p>
-                        <p>✉️ <a href="mailto:info@prabhupremitrust.org"
-                                style="color: inherit; text-decoration: none;">info@prabhupremitrust.org</a></p>
+                        <p>📍 Charkop, Kandivali West, Mumbai – 400067</p>
+                        <p>📞 <a href="tel:+919769909299" style="color: inherit; text-decoration: none;">+91 97699 09299</a></p>
+                        <p>✉️ <a href="mailto:admin@prabhupremitrust.com"
+                                style="color: inherit; text-decoration: none;">admin@prabhupremitrust.com</a></p>
                     </div>
                 </div>
             </div>
 
             <div class="footer__bottom">
-                <p class="footer__copyright">© 2026 PrabhuPremi Trust. All rights reserved.</p>
+                <p class="footer__copyright" data-i18n="footer_copyright">© 2026 PrabhuPremi Trust. All rights reserved.</p>
                 <nav class="footer__legal">
-                    <a href="legal/privacy.html">Privacy Policy</a>
-                    <a href="legal/terms.html">Terms & Conditions</a>
-                    <a href="legal/donation-policy.html">Donation Policy</a>
+                    <a href="legal/privacy.html" data-i18n="footer_privacy">Privacy Policy</a>
+                    <a href="legal/terms.html" data-i18n="footer_terms">Terms & Conditions</a>
+                    <a href="legal/donation-policy.html" data-i18n="footer_donation_policy">Donation Policy</a>
                 </nav>
             </div>
         </div>
@@ -367,7 +699,7 @@
 
 
     <script src="scripts/certificate.js"></script>
-    <script src="scripts/main.js"></script>
+    <script src="scripts/main.js?v=5"></script>
 </body>
 
 </html>

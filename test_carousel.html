@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="PrabhuPremi Trust - A Jain spiritual and social service trust dedicated to compassion, service, and spiritual growth. Join us in seva and make a difference.">
+  <meta name="keywords"
+    content="Jain trust, spiritual service, seva, charity, donation, yatra, jatra, Ahimsa, compassion">
+  <meta name="author" content="PrabhuPremi Trust">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="PrabhuPremi Trust - Spiritual Service & Compassion">
+  <meta property="og:description"
+    content="A faith-inspired NGO rooted in Jain values, dedicated to bridging the gap between those with abundance and those in need.">
+  <meta property="og:type" content="website">
+
+  <title>PrabhuPremi Trust | Jain Spiritual & Social Service Trust</title>
+
+  <!-- Google Fonts - Nasarna Style -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Open+Sans:wght@400;600;700&family=Rubik:wght@400;500;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/components.css">
+  <link rel="stylesheet" href="styles/pages.css">
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container navbar__container">
+      <a href="index.html" class="navbar__logo">
+        <img src="assets/images/logo.png" alt="PrabhuPremi Trust Logo" class="navbar__logo-img">
+      </a>
+
+      <ul class="navbar__menu">
+        <li><a href="about.html" class="navbar__link" data-i18n="nav_about">About Us</a></li>
+        <li><a href="activities.html" class="navbar__link" data-i18n="nav_activities">Activities</a></li>
+        <li><a href="jatra.html" class="navbar__link" data-i18n="nav_jatra">Jatra</a></li>
+        <li><a href="events.html" class="navbar__link" data-i18n="nav_events">Events</a></li>
+        <li><a href="gallery.html" class="navbar__link" data-i18n="nav_gallery">Gallery</a></li>
+        <li><a href="contact.html" class="navbar__link" data-i18n="nav_contact">Contact Us</a></li>
+        <li><a href="donate.html" class="btn btn--primary btn--sm" data-i18n="nav_donate">Donate Now</a></li>
+      </ul>
+
+      <button class="navbar__toggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <!-- Language Toggle (Integrated) -->
+      <div class="navbar__lang">
+        <button class="lang-toggle__btn active" data-lang="en">EN</button>
+        <button class="lang-toggle__btn" data-lang="gu">ગુજ</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section (Fullscreen Palitana Temple View) -->
+  <section class="hero hero--fullscreen" id="hero">
+    <div class="hero__bg-wrapper">
+      <img src="assets/images/palitana-marble-hero.png" alt="Shatrunjay Mahatirth Palitana" class="hero__bg-image">
+    </div>
+    <div class="hero__overlay"></div>
+
+    <div class="container hero__container">
+      <div class="hero__content hero__content--left">
+        <div class="hero__spiritual-ornament animate-reveal">
+          <svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M50 5C50 5 55 30 75 30C95 30 95 50 75 50C55 50 50 75 50 75C50 75 45 50 25 50C5 50 5 30 25 30C45 30 50 5 50 5Z"
+              stroke="var(--color-primary-400)" stroke-width="2" />
+            <circle cx="50" cy="40" r="12" stroke="var(--color-primary-400)" stroke-width="2" />
+            <path d="M50 40L50 65" stroke="var(--color-primary-400)" stroke-width="2" stroke-linecap="round" />
+          </svg>
+        </div>
+        <p class="hero__mantra animate-reveal animate-delay-100">॥ णमो अरिहंताणं ॥</p>
+        <h1 class="hero__title hero__title--nasarna animate-reveal animate-delay-200" data-i18n="hero_title">
+          Serving the Divine,<br>
+          Uplifting <span class="text-accent">Humanity</span>
+        </h1>
+        <div class="hero__divider animate-reveal animate-delay-300">
+          <span class="divider-line"></span>
+          <span class="divider-dot">🪷</span>
+          <span class="divider-line"></span>
+        </div>
+        <p class="hero__subtitle animate-reveal animate-delay-400" data-i18n="hero_subtitle">
+          Bridging the gap between abundance and need through the path of selfless service.
+        </p>
+        <div class="hero__cta hero__cta--left animate-zoom-in animate-delay-500">
+          <a href="about.html" class="btn btn--ghost-light btn--lg">
+            <span class="play-icon">▶</span> <span data-i18n="hero_watch_story">Watch Our Story</span>
+          </a>
+        </div>
+
+        <!-- Chovihar Chhath Saat Jatra CTA -->
+        <a href="chociyaar-jatra.html" class="hero__donation-chip animate-reveal animate-delay-600">
+          <span class="hero__donation-chip-icon">✨</span>
+          <span class="hero__donation-chip-text" data-i18n="hero_jatra_chip">Chovihar Chhath Saat Jatra</span>
+          <span class="hero__donation-chip-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Daily Spiritual Quote Section -->
+  <section class="section daily-quote-section" id="daily-quote">
+    <div class="container">
+      <div class="daily-quote__container animate-on-scroll">
+        <div class="daily-quote__icon">🪷</div>
+        <div class="daily-quote__content">
+          <h2 class="daily-quote__title" data-i18n="quote_title">Daily Spiritual Reflection</h2>
+          <blockquote class="daily-quote__text" id="daily-quote-text">
+            "Loading divine wisdom..."
+          </blockquote>
+          <cite class="daily-quote__source" id="daily-quote-source">— PrabhuPremi Trust</cite>
+        </div>
+        <div class="daily-quote__share">
+          <button class="btn-icon" aria-label="Share Quote" id="share-quote-btn">🔗</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <style>
+    .hero__announcement-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: var(--space-8);
+      padding: 10px 20px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 50px;
+      color: rgba(255, 255, 255, 0.9);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero__announcement-chip:hover {
+      background: rgba(241, 91, 38, 0.2);
+      border-color: rgba(241, 91, 38, 0.5);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(241, 91, 38, 0.3);
+    }
+
+    .hero__announcement-chip-badge {
+      background: linear-gradient(135deg, #F15B26, #FF8C42);
+      color: white;
+      padding: 4px 10px;
+      border-radius: 50px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      animation: pulse-chip 2s ease infinite;
+    }
+
+    @keyframes pulse-chip {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.05);
+      }
+    }
+
+    .hero__announcement-chip-text {
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .hero__announcement-chip-arrow {
+      font-size: 1rem;
+      transition: transform 0.3s ease;
+    }
+
+    .hero__announcement-chip:hover .hero__announcement-chip-arrow {
+      transform: translateX(4px);
+    }
+
+    @media (max-width: 768px) {
+      .hero__announcement-chip {
+        padding: 8px 14px;
+        gap: 8px;
+      }
+
+      .hero__announcement-chip-text {
+        font-size: 0.75rem;
+      }
+    }
+  </style>
+
+
+  <!-- About Preview Section -->
+  <section class="section about-preview">
+    <div class="container">
+      <div class="about-preview__grid">
+        <div class="about-preview__content animate-on-scroll">
+          <span class="section-header__tag" data-i18n="section_who_tag">Who We Are</span>
+          <h2 data-i18n="about_preview_title">A Bridge Between <span class="text-gradient">Abundance & Need</span></h2>
+          <p class="about-preview__text" data-i18n="about_preview_text1">
+            Prabhu Premi Trust (PPT) is a faith-inspired NGO rooted in Jain values. For us, PPT holds a far
+            deeper, more profound meaning: <strong>Prabhu</strong> (The Divine),
+            <strong>Premi</strong> (One who loves with devotion), and <strong>Trust</strong> (A solemn responsibility to
+            serve).
+          </p>
+          <p class="about-preview__text" data-i18n="about_preview_text2">
+            "Only a true Prabhu Premi — one who loves the Divine with a pure heart —
+            feels the inner call to give, uplift, and serve without expectation."
+          </p>
+          <div class="about-preview__features">
+            <div class="about-preview__feature">
+              <span class="about-preview__feature-icon">🪷</span>
+              <span data-i18n="about_feature_women">Women-Led</span>
+            </div>
+            <div class="about-preview__feature">
+              <span class="about-preview__feature-icon">🙏</span>
+              <span data-i18n="about_feature_spiritual">Spiritually Guided</span>
+            </div>
+            <div class="about-preview__feature">
+              <span class="about-preview__feature-icon">💝</span>
+              <span data-i18n="about_feature_compassion">Compassion First</span>
+            </div>
+          </div>
+          <a href="about.html" class="btn btn--primary" data-i18n="about_learn_more">Learn More About Us</a>
+        </div>
+        <div class="about-preview__image animate-on-scroll animate-delay-200">
+          <div class="about-preview__image-wrapper">
+            <div class="about-preview__image-glow"></div>
+            <div class="about-preview__image-placeholder" style="background: none; padding: 0;">
+              <img src="assets/images/MG-134.JPG" alt="PrabhuPremi Trust Community" class="about-preview__image"
+                style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pillars Section (Nasarna Service Style) -->
+  <section class="section pillars pillars--modern" id="pillars">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-header__tag" data-i18n="section_help_tag">How We Help</span>
+        <h2 class="section-header__title" data-i18n="pillars_title">Seven Avenues of <span
+            class="text-gradient">Compassion</span></h2>
+        <p class="section-header__text" data-i18n="pillars_subtitle">Transforming lives through spiritual and social
+          impact programs.</p>
+      </div>
+
+      <div class="services-grid">
+        <!-- 01 Vaiyavachh -->
+        <div class="service-card animate-on-scroll">
+          <div class="service-card__icon-wrapper">🙏</div>
+          <h3 class="service-card__title" data-i18n="pillar1_title">Vaiyavachh</h3>
+          <p class="service-card__text" data-i18n="pillar1_desc">Serving Jain Sadhus & Sadhvis with devotion and care,
+            helping them on their
+            spiritual journey.</p>
+          <a href="activities.html#vaiyavachh" class="service-card__link" data-i18n="common_learn_more">Learn More</a>
+        </div>
+
+        <!-- 02 Jeevdaya -->
+        <div class="service-card animate-on-scroll animate-delay-100">
+          <div class="service-card__icon-wrapper">🐄</div>
+          <h3 class="service-card__title" data-i18n="pillar2_title">Jeevdaya</h3>
+          <p class="service-card__text" data-i18n="pillar2_desc">Protecting and feeding voiceless souls in Gaushalas,
+            embodying compassion
+            towards all living beings.</p>
+          <a href="activities.html#jeevdaya" class="service-card__link" data-i18n="common_support_animals">Support
+            Animals</a>
+        </div>
+
+        <!-- 03 Education -->
+        <div class="service-card animate-on-scroll animate-delay-200">
+          <div class="service-card__icon-wrapper">📚</div>
+          <h3 class="service-card__title" data-i18n="pillar3_title">Education</h3>
+          <p class="service-card__text" data-i18n="pillar3_desc">Empowering the future through knowledge and support for
+            underprivileged
+            students.</p>
+          <a href="activities.html#education" class="service-card__link" data-i18n="common_edu_programs">Education
+            Programs</a>
+        </div>
+
+        <!-- 04 Medical -->
+        <div class="service-card animate-on-scroll">
+          <div class="service-card__icon-wrapper">🏥</div>
+          <h3 class="service-card__title" data-i18n="pillar4_title">Medical</h3>
+          <p class="service-card__text" data-i18n="pillar4_desc">Providing essential healthcare and free medical camps
+            to the needy as a form of
+            Seva.</p>
+          <a href="activities.html#medical" class="service-card__link" data-i18n="common_healthcare_seva">Healthcare
+            Seva</a>
+        </div>
+
+        <!-- 05 Sadharmik Bhakti -->
+        <div class="service-card animate-on-scroll animate-delay-100">
+          <div class="service-card__icon-wrapper">🤝</div>
+          <h3 class="service-card__title" data-i18n="pillar5_title">Sadharmik Bhakti</h3>
+          <p class="service-card__text" data-i18n="pillar5_desc">Supporting fellow community members with dignity in
+            times of clinical or
+            financial need.</p>
+          <a href="activities.html#sadharmik" class="service-card__link" data-i18n="common_join_support">Join
+            Support</a>
+        </div>
+
+        <!-- 06 Anukampa -->
+        <div class="service-card animate-on-scroll animate-delay-200">
+          <div class="service-card__icon-wrapper">💝</div>
+          <h3 class="service-card__title" data-i18n="pillar6_title">Anukampa</h3>
+          <p class="service-card__text" data-i18n="pillar6_desc">Compassionate aid for the general public and destitute,
+            uplifting those in
+            crisis.</p>
+          <a href="activities.html#anukampa" class="service-card__link" data-i18n="common_lend_hand">Lend a Hand</a>
+        </div>
+
+        <!-- 07 General Welfare -->
+        <div class="service-card animate-on-scroll">
+          <div class="service-card__icon-wrapper">✨</div>
+          <h3 class="service-card__title" data-i18n="pillar7_title">General Welfare</h3>
+          <p class="service-card__text" data-i18n="pillar7_desc">Holistic welfare activities for societal upliftment,
+            ensuring aid reaches where
+            it's needed most.</p>
+          <a href="activities.html#general" class="service-card__link" data-i18n="common_support_all">Support All</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Featured Programs Section -->
+  <section class="section programs">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-header__tag" data-i18n="section_programs_tag">Our Programs</span>
+        <h2 class="section-header__title" data-i18n="programs_title">Ways of <span class="text-gradient">Impact</span>
+        </h2>
+        <p class="section-header__text" data-i18n="programs_subtitle">
+          From spiritual growth to social welfare, discover how we're making a difference.
+        </p>
+      </div>
+
+      <div class="programs__grid">
+        <!-- Spiritual Programs -->
+        <div class="program-card program-card--spiritual animate-on-scroll">
+          <div class="program-card__badge" data-i18n="program_badge_spiritual">Spiritual</div>
+          <div class="program-card__icon">🪷</div>
+          <h3 class="program-card__title" data-i18n="program1_title">Pravachans & Discourses</h3>
+          <p class="program-card__text" data-i18n="program1_desc">Soul-enriching spiritual talks by revered Acharyas,
+            illuminating the path of
+            Dharma.</p>
+          <a href="activities.html" class="program-card__link" data-i18n="common_learn_more_arrow">Learn More →</a>
+        </div>
+
+        <div class="program-card program-card--spiritual animate-on-scroll animate-delay-100">
+          <div class="program-card__badge" data-i18n="program_badge_spiritual">Spiritual</div>
+          <div class="program-card__icon">🧘</div>
+          <h3 class="program-card__title" data-i18n="program2_title">Meditation & Samayik</h3>
+          <p class="program-card__text" data-i18n="program2_desc">Guided sessions for inner peace, self-reflection, and
+            spiritual advancement.</p>
+          <a href="activities.html" class="program-card__link" data-i18n="common_learn_more_arrow">Learn More →</a>
+        </div>
+
+        <div class="program-card program-card--spiritual animate-on-scroll animate-delay-200">
+          <div class="program-card__badge" data-i18n="program_badge_spiritual">Spiritual</div>
+          <div class="program-card__icon">🎪</div>
+          <h3 class="program-card__title" data-i18n="program3_title">Youth Spiritual Camps</h3>
+          <p class="program-card__text" data-i18n="program3_desc">Engaging programs for young minds to connect with Jain
+            philosophy and values.
+          </p>
+          <a href="activities.html" class="program-card__link" data-i18n="common_learn_more_arrow">Learn More →</a>
+        </div>
+
+        <!-- Social Seva -->
+        <div class="program-card program-card--seva animate-on-scroll">
+          <div class="program-card__badge" data-i18n="program_badge_seva">Seva</div>
+          <div class="program-card__icon">📖</div>
+          <h3 class="program-card__title" data-i18n="program4_title">Education Support</h3>
+          <p class="program-card__text" data-i18n="program4_desc">Scholarships and supplies for underprivileged students
+            to build brighter
+            futures.</p>
+          <a href="activities.html" class="program-card__link" data-i18n="common_learn_more_arrow">Learn More →</a>
+        </div>
+
+        <div class="program-card program-card--seva animate-on-scroll animate-delay-100">
+          <div class="program-card__badge" data-i18n="program_badge_seva">Seva</div>
+          <div class="program-card__icon">💊</div>
+          <h3 class="program-card__title" data-i18n="program5_title">Medical Aid Camps</h3>
+          <p class="program-card__text" data-i18n="program5_desc">Free healthcare services, check-ups, and medicine
+            distribution for those in
+            need.</p>
+          <a href="activities.html" class="program-card__link" data-i18n="common_learn_more_arrow">Learn More →</a>
+        </div>
+
+        <div class="program-card program-card--seva animate-on-scroll animate-delay-200">
+          <div class="program-card__badge" data-i18n="program_badge_seva">Seva</div>
+          <div class="program-card__icon">🍚</div>
+          <h3 class="program-card__title" data-i18n="program6_title">Food Distribution</h3>
+          <p class="program-card__text" data-i18n="program6_desc">Regular meal drives to ensure no one goes hungry in
+            our community.</p>
+          <a href="activities.html" class="program-card__link" data-i18n="common_learn_more_arrow">Learn More →</a>
+        </div>
+      </div>
+
+      <div class="programs__cta animate-on-scroll">
+        <a href="activities.html" class="btn btn--secondary btn--lg" data-i18n="programs_view_all">View All Programs</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Upcoming Events Section -->
+  <section class="section section--dark events-preview">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-header__tag" data-i18n="section_coming_tag">What's Coming</span>
+        <h2 class="section-header__title" data-i18n="events_title_section">Upcoming <span
+            class="text-gradient">Events</span></h2>
+      </div>
+
+      <div class="events-preview__grid">
+        <div class="event-card event-card--featured animate-on-scroll">
+          <div class="event-card__flash" data-i18n="event_coming_soon">🔴 Coming Soon</div>
+          <div class="event-card__date">
+            <span class="event-card__day">08</span>
+            <span class="event-card__month">Sept</span>
+          </div>
+          <div class="event-card__content">
+            <h3 class="event-card__title" data-i18n="event1_title">Paryushan Mahaparva</h3>
+            <p class="event-card__text" data-i18n="event1_desc">Join us for the most auspicious time of self-reflection,
+              forgiveness, and
+              spiritual growth.</p>
+            <div class="event-card__meta">
+              <span data-i18n="event1_loc">📍 Main Temple Hall</span>
+              <span data-i18n="event1_time">⏰ 6:00 AM onwards</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="event-card animate-on-scroll animate-delay-200">
+          <div class="event-card__date">
+            <span class="event-card__day">08-12</span>
+            <span class="event-card__month">Jan</span>
+          </div>
+          <div class="event-card__content">
+            <h3 class="event-card__title" data-i18n="event3_title">Chovihaar Chath Saat Jatra 2027</h3>
+            <p class="event-card__text" data-i18n="event3_desc">A transformative 5-day spiritual pilgrimage to Palitana's sacred Shatrunjay Hill with daily pravachans.</p>
+            <div class="event-card__meta">
+              <span data-i18n="event3_loc">📍 Palitana, Gujarat</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="events-preview__cta animate-on-scroll">
+        <a href="events.html" class="btn btn--white btn--lg" data-i18n="events_view_calendar">View Full Calendar</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="section testimonials">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-header__tag" data-i18n="section_testimonials_tag">Blessings & Words</span>
+        <h2 class="section-header__title" data-i18n="testimonials_title">Voices of <span
+            class="text-gradient">Gratitude</span></h2>
+      </div>
+
+      <div class="carousel testimonials__carousel animate-on-scroll">
+        <div class="carousel__track">
+          <div class="carousel__slide">
+            <div class="testimonial-card">
+              <span class="testimonial-card__quote">"</span>
+              <p class="testimonial-card__text" data-i18n="testi1_text">
+                When women lead with spiritual strength, compassion, and clarity, they ignite
+                change that transforms entire communities. PrabhuPremi Trust stands as a living example.
+              </p>
+              <div class="testimonial-card__author">
+                <div class="testimonial-card__avatar-placeholder">👤</div>
+                <div class="testimonial-card__info">
+                  <h4 data-i18n="testi1_author">A Devoted Community Member</h4>
+                  <p data-i18n="testi1_origin">Jain Sangh</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel__slide">
+            <div class="testimonial-card">
+              <span class="testimonial-card__quote">"</span>
+              <p class="testimonial-card__text" data-i18n="testi2_text">
+                True giving doesn't just change lives — it awakens souls. Through PPT, my donation
+                became more than just help — it became a path of transformation for both giver and receiver.
+              </p>
+              <div class="testimonial-card__author">
+                <div class="testimonial-card__avatar-placeholder">👤</div>
+                <div class="testimonial-card__info">
+                  <h4 data-i18n="testi2_author">A Grateful Donor</h4>
+                  <p data-i18n="testi2_origin">Mumbai</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel__slide">
+            <div class="testimonial-card">
+              <span class="testimonial-card__quote">"</span>
+              <p class="testimonial-card__text" data-i18n="testi3_text">
+                The seva provided during the medical camp saved my father's life. The compassion
+                and care shown by the volunteers was truly divine. I thank PrabhuPremi Trust from the bottom of my
+                heart.
+              </p>
+              <div class="testimonial-card__author">
+                <div class="testimonial-card__avatar-placeholder">👤</div>
+                <div class="testimonial-card__info">
+                  <h4 data-i18n="testi3_author">A Grateful Family</h4>
+                  <p data-i18n="testi3_origin">Beneficiary</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel__slide">
+            <div class="testimonial-card">
+              <span class="testimonial-card__quote">"</span>
+              <p class="testimonial-card__text" data-i18n="testi4_text">
+                Being part of the recent Jatra was an eye-opening experience. The meticulous planning and the overwhelming spirit of devotion made the journey completely seamless and profoundly spiritual.
+              </p>
+              <div class="testimonial-card__author">
+                <div class="testimonial-card__avatar-placeholder">👤</div>
+                <div class="testimonial-card__info">
+                  <h4 data-i18n="testi4_author">An Inspired Pilgrim</h4>
+                  <p data-i18n="testi4_origin">Ahmedabad</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel__slide">
+            <div class="testimonial-card">
+              <span class="testimonial-card__quote">"</span>
+              <p class="testimonial-card__text" data-i18n="testi5_text">
+                Seeing the joy on the faces of children receiving educational scholarships through PPT is my greatest reward. This trust ensures every rupee serves its true purpose.
+              </p>
+              <div class="testimonial-card__author">
+                <div class="testimonial-card__avatar-placeholder">👤</div>
+                <div class="testimonial-card__info">
+                  <h4 data-i18n="testi5_author">A Long-term Supporter</h4>
+                  <p data-i18n="testi5_origin">Surat</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel__controls">
+          <button class="carousel__prev" aria-label="Previous testimonial">←</button>
+          <div class="carousel__dots"></div>
+          <button class="carousel__next" aria-label="Next testimonial">→</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Wall of Fame Section -->
+  <section class="section wall-of-fame">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-header__tag" data-i18n="section_wall_tag">Wall of Fame</span>
+        <h2 class="section-header__title" data-i18n="wall_title">Our Distinguished <span
+            class="text-gradient">Donors</span></h2>
+        <p class="section-header__text" data-i18n="wall_subtitle">Celebrating the generous souls whose contributions
+          sustain our mission of
+          service.</p>
+      </div>
+
+      <div class="wall-of-fame__grid">
+        <!-- Donor 1 -->
+        <div class="donor-card animate-on-scroll">
+          <div class="donor-card__image-wrapper">
+            <img src="assets/images/donor_1.png" alt="Donor Photo" class="donor-card__img">
+            <div class="donor-card__badges">
+              <span class="donor-card__badge donor-card__badge--count" data-i18n="wall_diamond">Diamond Donor</span>
+            </div>
+          </div>
+          <div class="donor-card__content">
+            <h3 class="donor-card__name">Mr. Rajesh Shah</h3>
+            <span class="donor-card__purpose" data-i18n="wall_purpose_vihar">Vihar Dham Construction</span>
+            <div class="donor-card__divider"></div>
+            <div class="donor-card__stats">
+              <div class="donor-card__amount-box">
+                <span class="donor-card__amount-label" data-i18n="wall_label_amount">Donated Amount</span>
+                <span class="donor-card__amount-value">₹ 50,000</span>
+              </div>
+              <div class="donor-card__count-box">
+                <span class="donor-card__count-label" data-i18n="wall_label_count">Total Donations</span>
+                <span class="donor-card__count-value">4 <span data-i18n="wall_times">Times</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Donor 2 -->
+        <div class="donor-card animate-on-scroll animate-delay-100">
+          <div class="donor-card__image-wrapper">
+            <img src="assets/images/donor_2.png" alt="Donor Photo" class="donor-card__img">
+            <div class="donor-card__badges">
+              <span class="donor-card__badge donor-card__badge--count" data-i18n="wall_pearl">Pearl Donor</span>
+            </div>
+          </div>
+          <div class="donor-card__content">
+            <h3 class="donor-card__name">Mrs. Meena Mehta</h3>
+            <span class="donor-card__purpose" data-i18n="wall_purpose_medical">Medical Aid & Camps</span>
+            <div class="donor-card__divider"></div>
+            <div class="donor-card__stats">
+              <div class="donor-card__amount-box">
+                <span class="donor-card__amount-label" data-i18n="wall_label_amount">Donated Amount</span>
+                <span class="donor-card__amount-value">₹ 25,000</span>
+              </div>
+              <div class="donor-card__count-box">
+                <span class="donor-card__count-label" data-i18n="wall_label_count">Total Donations</span>
+                <span class="donor-card__count-value">3 <span data-i18n="wall_times">Times</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Donor 3 -->
+        <div class="donor-card animate-on-scroll animate-delay-200">
+          <div class="donor-card__image-wrapper">
+            <img src="assets/images/donor_3.png" alt="Donor Photo" class="donor-card__img">
+            <div class="donor-card__badges">
+              <span class="donor-card__badge donor-card__badge--count" data-i18n="wall_golden">Golden Heart</span>
+            </div>
+          </div>
+          <div class="donor-card__content">
+            <h3 class="donor-card__name">The Anand Family</h3>
+            <span class="donor-card__purpose" data-i18n="wall_purpose_edu">Educational Scholarships</span>
+            <div class="donor-card__divider"></div>
+            <div class="donor-card__stats">
+              <div class="donor-card__amount-box">
+                <span class="donor-card__amount-label" data-i18n="wall_label_amount">Donated Amount</span>
+                <span class="donor-card__amount-value">₹ 75,000</span>
+              </div>
+              <div class="donor-card__count-box">
+                <span class="donor-card__count-label" data-i18n="wall_label_count">Total Donations</span>
+                <span class="donor-card__count-value">5 <span data-i18n="wall_times">Times</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section section--dark cta-section">
+    <div class="container">
+      <div class="cta-section__content animate-on-scroll">
+        <h2 data-i18n="cta_title">Ready to Make a <span class="text-gradient">Difference</span>?</h2>
+        <p data-i18n="cta_desc">Your generosity becomes a lifeline — uplifting those who have less, and creating a cycle
+          of kindness,
+          dignity, and spiritual fulfillment.</p>
+        <div class="cta-section__buttons">
+          <a href="donate.html" class="btn btn--primary btn--lg btn--glow" data-i18n="nav_donate">Donate Now</a>
+          <a href="community.html" class="btn btn--ghost btn--lg" style="border-color: #fff; color: #fff;"
+            data-i18n="cta_volunteer">Become a
+            Volunteer</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+                        <div class="footer__brand">
+                    <div class="footer__logo">
+                        <img src="assets/images/logo.png" alt="PrabhuPremi Trust Logo" class="footer__logo-img">
+                    </div>
+                    <p>
+                        A faith-inspired NGO rooted in Jain values, dedicated to service, compassion,
+                        and spiritual growth. Give with love. Serve with purpose. Grow with faith.
+                    </p>
+                    <div class="footer__social">
+                        <a href="https://www.instagram.com/prabhupremitrust/" target="_blank" rel="noopener" aria-label="Instagram" class="social--instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        </a>
+                        <a href="https://www.youtube.com/@PrabhuPremiTrust" target="_blank" rel="noopener" aria-label="YouTube" class="social--youtube"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+                        <a href="#" aria-label="WhatsApp">💬</a>
+                    </div>
+                    <div style="margin-top:0.75rem;">
+                        <a href="https://www.instagram.com/prabhupremitrust/" target="_blank" rel="noopener"
+                           style="display:inline-flex;align-items:center;gap:0.4rem;font-size:0.78rem;color:rgba(255,255,255,0.6);text-decoration:none;transition:color 0.2s;"
+                           onmouseover="this.style.color='#f09433'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                            @prabhupremitrust
+                        </a>
+                    </div>
+                </div>
+
+        <div class="footer__column">
+          <h4 data-i18n="nav_quick_links">Quick Links</h4>
+          <nav class="footer__links">
+            <a href="about.html" data-i18n="nav_about">About Us</a>
+            <a href="activities.html" data-i18n="nav_activities">Our Activities</a>
+            <a href="jatra.html" data-i18n="nav_jatra">Jatra</a>
+            <a href="events.html" data-i18n="nav_events">Events</a>
+            <a href="gallery.html" data-i18n="nav_gallery">Gallery</a>
+          </nav>
+        </div>
+
+        <div class="footer__column">
+          <h4 data-i18n="nav_get_involved">Get Involved</h4>
+          <nav class="footer__links">
+            <a href="donate.html" data-i18n="nav_donate">Donate</a>
+            <a href="community.html" data-i18n="nav_volunteer">Volunteer</a>
+            <a href="community.html" data-i18n="nav_member">Become a Member</a>
+            <a href="contact.html" data-i18n="nav_contact">Contact Us</a>
+          </nav>
+        </div>
+
+        <div class="footer__column">
+          <h4 data-i18n="nav_contact_header">Contact</h4>
+          <div class="footer__links">
+            <p data-i18n="footer_address">📍 Mumbai, India</p>
+            <p>📞 <a href="tel:+919876543210" style="color: inherit; text-decoration: none;">+91 98765 43210</a></p>
+            <p>✉️ <a href="mailto:info@prabhupremitrust.org"
+                style="color: inherit; text-decoration: none;">info@prabhupremitrust.org</a></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__copyright" data-i18n="footer_copyright">© 2026 PrabhuPremi Trust. All rights reserved.</p>
+        <nav class="footer__legal">
+          <a href="legal/privacy.html" data-i18n="footer_privacy">Privacy Policy</a>
+          <a href="legal/terms.html" data-i18n="footer_terms">Terms & Conditions</a>
+          <a href="legal/donation-policy.html" data-i18n="footer_donation_policy">Donation Policy</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox">
+    <div class="lightbox__backdrop"></div>
+    <div class="lightbox__content">
+      <img src="" alt="" class="lightbox__image">
+    </div>
+    <button class="lightbox__close" aria-label="Close lightbox">×</button>
+  </div>
+
+  <!-- Scripts -->
+  <script src="scripts/quotes.js"></script>
+  <script src="scripts/main.js?v=5"></script>
+</body>
+
+</html>

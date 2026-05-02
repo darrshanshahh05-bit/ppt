@@ -203,8 +203,8 @@
                         <div class="contact-info__item">
                             <div class="contact-info__icon">📍</div>
                             <div class="contact-info__content">
-                                <h3>Our Office</h3>
-                                <p>Mumbai, India</p>
+                                <h3>Registered Address</h3>
+                                <p>526/ C-21 Lokmanya Society,<br>Sector 5, Charkop,<br>Kandivali West, Mumbai – 400067</p>
                             </div>
                         </div>
 
@@ -212,8 +212,7 @@
                             <div class="contact-info__icon">📞</div>
                             <div class="contact-info__content">
                                 <h3>Phone Number</h3>
-                                <p><a href="tel:+919876543210" style="color: inherit; text-decoration: none;">+91 98765
-                                        43210</a></p>
+                                <p><a href="tel:+919769909299" style="color: inherit; text-decoration: none;">+91 97699 09299</a></p>
                             </div>
                         </div>
 
@@ -221,38 +220,50 @@
                             <div class="contact-info__icon">✉️</div>
                             <div class="contact-info__content">
                                 <h3>Email Address</h3>
-                                <p><a href="mailto:info@prabhupremitrust.org"
-                                        style="color: inherit; text-decoration: none;">info@prabhupremitrust.org</a></p>
+                                <p><a href="mailto:admin@prabhupremitrust.com"
+                                        style="color: inherit; text-decoration: none;">admin@prabhupremitrust.com</a></p>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="contact-form-container animate-on-scroll animate-delay-200">
-                    <form action="#" class="contact-form">
+
+                    <!-- Success State -->
+                    <div id="formSuccess" style="display:none; text-align:center; padding: var(--space-12) var(--space-8);">
+                        <div style="font-size:4rem; margin-bottom:var(--space-4);">🙏</div>
+                        <h3 style="color:var(--color-secondary-700); margin-bottom:var(--space-3);">Message Received!</h3>
+                        <p style="color:var(--color-neutral-600); line-height:1.7;">Thank you for reaching out. Our team will get back to you within 24 hours.</p>
+                        <button onclick="resetContactForm()" class="btn btn--primary" style="margin-top:var(--space-6);">Send Another Message</button>
+                    </div>
+
+                    <form id="contactForm" action="#" class="contact-form">
                         <div class="form-group">
                             <label for="name" class="form-label">Full Name</label>
-                            <input type="text" id="name" class="form-input" placeholder="Your name" required>
+                            <input type="text" id="name" name="name" class="form-input" placeholder="Your name" required>
                         </div>
                         <div class="form-group">
                             <label for="email" class="form-label">Email Address</label>
-                            <input type="email" id="email" class="form-input" placeholder="Your email" required>
+                            <input type="email" id="email" name="email" class="form-input" placeholder="Your email" required>
                         </div>
                         <div class="form-group">
                             <label for="phone" class="form-label">Phone Number</label>
-                            <input type="tel" id="phone" class="form-input" placeholder="Your phone number">
+                            <input type="tel" id="phone" name="phone" class="form-input" placeholder="Your phone number">
                         </div>
                         <div class="form-group">
                             <label for="subject" class="form-label">Subject</label>
-                            <input type="text" id="subject" class="form-input" placeholder="How can we help?" required>
+                            <input type="text" id="subject" name="subject" class="form-input" placeholder="How can we help?" required>
                         </div>
                         <div class="form-group">
                             <label for="message" class="form-label">Message</label>
-                            <textarea id="message" class="form-textarea" placeholder="Your message here..."
-                                required></textarea>
+                            <textarea id="message" name="message" class="form-textarea" placeholder="Your message here..." required></textarea>
                         </div>
-                        <button type="submit" class="btn btn--primary btn--lg" style="width: 100%;">Send
-                            Message</button>
+                        <div id="formError" style="display:none; color:#dc2626; font-size:0.875rem; margin-bottom:var(--space-4); padding:var(--space-3); background:#fef2f2; border-radius:8px; border:1px solid #fecaca;">
+                            ⚠️ Something went wrong. Please try again or email us directly.
+                        </div>
+                        <button type="submit" id="submitBtn" class="btn btn--primary btn--lg" style="width: 100%;">
+                            <span id="submitBtnText">Send Message</span>
+                        </button>
                     </form>
                 </div>
             </div>
@@ -283,9 +294,9 @@
 
             <div class="map-container animate-on-scroll">
                 <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241317.11609823277!2d72.74109995709657!3d19.08219783953448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c6306644edc1%3A0x5da4ed8f8d648c69!2sMumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1707000000000!5m2!1sen!2sin"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3767.4785!2d72.8373!3d19.2048!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b63e18f7c7e3%3A0x0!2sLokmanya+Society%2C+Sector+5%2C+Charkop%2C+Kandivali+West%2C+Mumbai%2C+Maharashtra+400067!5e0!3m2!1sen!2sin!4v1713800000000!5m2!1sen!2sin"
                     width="100%" height="400" style="border:0; border-radius: 16px;" allowfullscreen="" loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade" title="PrabhuPremi Trust Location - Mumbai">
+                    referrerpolicy="no-referrer-when-downgrade" title="PrabhuPremi Trust - Charkop Kandivali West Mumbai">
                 </iframe>
             </div>
         </div>
@@ -300,7 +311,7 @@
                 <p class="rsvp-modal__event-name" id="rsvpEventNameDisplay">Select an interest</p>
             </div>
             <div class="rsvp-modal__body" id="rsvpFormContainer">
-                <!-- Form is dynamically injected by main.js -->
+                <!-- Form is dynamically injected by main.js?v=3 -->
             </div>
         </div>
     </div>
@@ -309,7 +320,7 @@
     <footer class="footer">
         <div class="container">
             <div class="footer__grid">
-                <div class="footer__brand">
+                                <div class="footer__brand">
                     <div class="footer__logo">
                         <img src="assets/images/logo.png" alt="PrabhuPremi Trust Logo" class="footer__logo-img">
                     </div>
@@ -318,10 +329,19 @@
                         and spiritual growth. Give with love. Serve with purpose. Grow with faith.
                     </p>
                     <div class="footer__social">
-                        <a href="#" aria-label="Facebook">📘</a>
-                        <a href="#" aria-label="Instagram">📷</a>
-                        <a href="#" aria-label="YouTube">▶️</a>
+                        <a href="https://www.instagram.com/prabhupremitrust/" target="_blank" rel="noopener" aria-label="Instagram" class="social--instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        </a>
+                        <a href="https://www.youtube.com/@PrabhuPremiTrust" target="_blank" rel="noopener" aria-label="YouTube" class="social--youtube"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
                         <a href="#" aria-label="WhatsApp">💬</a>
+                    </div>
+                    <div style="margin-top:0.75rem;">
+                        <a href="https://www.instagram.com/prabhupremitrust/" target="_blank" rel="noopener"
+                           style="display:inline-flex;align-items:center;gap:0.4rem;font-size:0.78rem;color:rgba(255,255,255,0.6);text-decoration:none;transition:color 0.2s;"
+                           onmouseover="this.style.color='#f09433'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                            @prabhupremitrust
+                        </a>
                     </div>
                 </div>
 
@@ -349,28 +369,71 @@
                 <div class="footer__column">
                     <h4>Contact</h4>
                     <div class="footer__links">
-                        <p>📍 Mumbai, India</p>
-                        <p>📞 <a href="tel:+919876543210" style="color: inherit; text-decoration: none;">+91 98765
-                                43210</a></p>
-                        <p>✉️ <a href="mailto:info@prabhupremitrust.org"
-                                style="color: inherit; text-decoration: none;">info@prabhupremitrust.org</a></p>
+                        <p>📍 526/C-21 Lokmanya Society, Sector 5,<br>Charkop, Kandivali West, Mumbai – 400067</p>
+                        <p>📞 <a href="tel:+919769909299" style="color: inherit; text-decoration: none;">+91 97699 09299</a></p>
+                        <p>✉️ <a href="mailto:admin@prabhupremitrust.com"
+                                style="color: inherit; text-decoration: none;">admin@prabhupremitrust.com</a></p>
                     </div>
                 </div>
             </div>
 
             <div class="footer__bottom">
-                <p class="footer__copyright">© 2026 PrabhuPremi Trust. All rights reserved.</p>
+                <p class="footer__copyright" data-i18n="footer_copyright">© 2026 PrabhuPremi Trust. All rights reserved.</p>
                 <nav class="footer__legal">
-                    <a href="legal/privacy.html">Privacy Policy</a>
-                    <a href="legal/terms.html">Terms & Conditions</a>
-                    <a href="legal/donation-policy.html">Donation Policy</a>
+                    <a href="legal/privacy.html" data-i18n="footer_privacy">Privacy Policy</a>
+                    <a href="legal/terms.html" data-i18n="footer_terms">Terms & Conditions</a>
+                    <a href="legal/donation-policy.html" data-i18n="footer_donation_policy">Donation Policy</a>
                 </nav>
             </div>
         </div>
     </footer>
 
     <!-- Scripts -->
-    <script src="scripts/main.js"></script>
+    <script src="scripts/main.js?v=5"></script>
+    <script>
+        const contactForm = document.getElementById('contactForm');
+        const submitBtn   = document.getElementById('submitBtn');
+        const submitText  = document.getElementById('submitBtnText');
+        const formSuccess = document.getElementById('formSuccess');
+        const formError   = document.getElementById('formError');
+
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            formError.style.display = 'none';
+
+            // Loading state
+            submitBtn.disabled = true;
+            submitText.textContent = 'Sending...';
+
+            const payload = {
+                type:      'contact',
+                name:      document.getElementById('name').value.trim(),
+                email:     document.getElementById('email').value.trim(),
+                phone:     document.getElementById('phone').value.trim(),
+                subject:   document.getElementById('subject').value.trim(),
+                message:   document.getElementById('message').value.trim()
+            };
+
+            const data = await submitToSheets(payload);
+            
+            if (data.status === 'success') {
+                contactForm.style.display = 'none';
+                formSuccess.style.display = 'block';
+            } else {
+                formError.style.display = 'block';
+                submitBtn.disabled = false;
+                submitText.textContent = 'Send Message';
+            }
+        });
+
+        function resetContactForm() {
+            contactForm.reset();
+            contactForm.style.display = 'block';
+            formSuccess.style.display = 'none';
+            submitBtn.disabled = false;
+            submitText.textContent = 'Send Message';
+        }
+    </script>
 </body>
 
 </html>

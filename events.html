@@ -336,9 +336,14 @@
         }
 
         .past-events__grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            display: flex;
+            justify-content: center;
             gap: var(--space-6);
+        }
+
+        .past-events__grid .past-event-card {
+            width: 100%;
+            max-width: 560px;
         }
 
         .past-event-card {
@@ -438,7 +443,8 @@
 
         @media (max-width: 1024px) {
             .past-events__grid {
-                grid-template-columns: 1fr;
+                flex-direction: column;
+                align-items: center;
             }
         }
 
@@ -733,7 +739,8 @@
             }
 
             .past-events__grid {
-                grid-template-columns: repeat(2, 1fr);
+                flex-direction: column;
+                align-items: center;
             }
         }
 
@@ -813,24 +820,19 @@
                     <div class="featured-event__badge" data-i18n="event_badge_featured">
                         <span>🔥</span> Featured Event
                     </div>
-                    <h2 class="featured-event__title" data-i18n="featured_event_title">Mahavir Janma Kalyanak 2026</h2>
-                    <p class="featured-event__desc" data-i18n="featured_event_desc">
-                        Join us for the grandest celebration of Lord Mahavir's birth anniversary.
-                        Experience divine processions, spiritual discourses, and communal feasts
-                        with thousands of devotees from across the nation.
+                    <h2 class="featured-event__title" id="featured_title" data-i18n="event1_title">Paryushan Mahaparva 2026</h2>
+                    <p class="featured-event__desc" id="featured_desc" data-i18n="event1_desc">
+                        Join us for the most auspicious time of self-reflection, forgiveness, and spiritual growth with daily pravachans.
                     </p>
                     <div class="featured-event__details">
                         <div class="featured-event__detail">
-                            <span class="featured-event__detail-icon">📅</span>
-                            <span data-i18n="featured_event_date">April 14, 2026</span>
+                            <span id="featured_date" data-i18n="event1_date_timeline">📅 Sept 8, 2026</span>
                         </div>
                         <div class="featured-event__detail">
-                            <span class="featured-event__detail-icon">📍</span>
-                            <span data-i18n="featured_event_loc">Shantinath Temple, Mumbai</span>
+                            <span id="featured_loc" data-i18n="event1_loc">📍 Palitana, Gujarat</span>
                         </div>
                         <div class="featured-event__detail">
-                            <span class="featured-event__detail-icon">⏰</span>
-                            <span data-i18n="featured_event_time">7:00 AM onwards</span>
+                            <span id="featured_time" data-i18n="event1_time">⏰ 6:00 AM onwards</span>
                         </div>
                     </div>
                     <button onclick="openRsvpModal('Mahavir Janma Kalyanak', 'Apr 14, 2026', 'events')"
@@ -919,64 +921,38 @@
                         with daily pravachans and samayik sessions.
                     </p>
                     <div class="timeline-event__meta">
-                        <span data-i18n="event1_loc_timeline">📍 Main Temple Hall</span>
-                        <span data-i18n="event1_time_timeline">⏰ 6:00 AM - 9:00 PM</span>
+                        <span data-i18n="event1_loc_timeline">📍 Palitana, Gujarat</span>
                         <span data-i18n="event1_all_timeline">👥 Open to all</span>
                     </div>
                     <div class="timeline-event__cta-bar">
-                        <span class="timeline-event__cta-date" data-i18n="event1_date_timeline">📅 Feb 15, 2026</span>
+                        <span class="timeline-event__cta-date" data-i18n="event1_date_timeline">📅 Sept 8, 2026</span>
                         <button class="btn--join"
-                            onclick="openRsvpModal('Paryushan Mahaparva', 'Feb 15, 2026', 'events')"
+                            onclick="openRsvpModal('Paryushan Mahaparva', 'Sept 8, 2026', 'events')"
                             data-i18n="btn_join_celebration">🎊 Join
                             Celebration</button>
                     </div>
                 </div>
 
-                <div class="timeline-event animate-on-scroll animate-delay-100" data-category="seva">
-                    <div class="timeline-event__header">
-                        <span class="timeline-event__category timeline-event__category--seva"
-                            data-i18n="cat_seva_btn">Social Seva</span>
-                    </div>
-                    <h3 class="timeline-event__title" data-i18n="event2_title_timeline">Mega Medical Camp Drive</h3>
-                    <p class="timeline-event__desc" data-i18n="event2_desc_timeline">
-                        Free health check-ups, dental care, and medicine distribution for underprivileged
-                        families in tribal regions. Doctors and volunteers needed!
-                    </p>
-                    <div class="timeline-event__meta">
-                        <span data-i18n="event2_loc_timeline">📍 Community Center, Vadodara</span>
-                        <span data-i18n="event2_time_timeline">⏰ 9:00 AM - 4:00 PM</span>
-                        <span data-i18n="event2_docs_timeline">🩺 50+ Doctors Expected</span>
-                    </div>
-                    <div class="timeline-event__cta-bar">
-                        <span class="timeline-event__cta-date" data-i18n="event2_date_timeline">📅 Feb 28, 2026</span>
-                        <button class="btn--join"
-                            onclick="openRsvpModal('Mega Medical Camp Drive', 'Feb 28, 2026', 'events')"
-                            data-i18n="btn_join_celebration">🎊
-                            Join Celebration</button>
-                    </div>
-                </div>
 
-                <div class="timeline-event animate-on-scroll animate-delay-200" data-category="festival">
+                <div class="timeline-event animate-on-scroll animate-delay-300" data-category="spiritual">
                     <div class="timeline-event__header">
-                        <span class="timeline-event__category timeline-event__category--festival"
-                            data-i18n="cat_festivals_title">Festival</span>
+                        <span class="timeline-event__category timeline-event__category--spiritual"
+                            data-i18n="cat_spiritual_title">Spiritual</span>
                     </div>
-                    <h3 class="timeline-event__title" data-i18n="event3_title_timeline">Mahavir Janma Kalyanak</h3>
+                    <h3 class="timeline-event__title" data-i18n="event3_title_timeline">Chovihaar Chath Saat Jatra 2027</h3>
                     <p class="timeline-event__desc" data-i18n="event3_desc_timeline">
-                        Celebrating the birth anniversary of Lord Mahavir with grand processions,
-                        pravachans, rath yatra, and communal bhojans.
+                        A transformative 5-day spiritual pilgrimage to Palitana's sacred Shatrunjay Hill with daily pravachans and Chovihar vrat.
                     </p>
                     <div class="timeline-event__meta">
-                        <span data-i18n="event3_loc_timeline">📍 Shantinath Temple</span>
-                        <span data-i18n="event3_time_timeline">⏰ 7:00 AM onwards</span>
-                        <span data-i18n="event3_attendees_timeline">🎉 5000+ Expected Attendees</span>
+                        <span data-i18n="event3_loc_timeline">📍 Palitana, Gujarat</span>
+                        <span data-i18n="event3_time_timeline">⏰ 5 Days</span>
+                        <span data-i18n="event3_attendees_timeline">👥 500+ Expected Attendees</span>
                     </div>
                     <div class="timeline-event__cta-bar">
-                        <span class="timeline-event__cta-date" data-i18n="event3_date_timeline">📅 Apr 14, 2026</span>
+                        <span class="timeline-event__cta-date" data-i18n="event3_date_timeline">📅 Jan 8-12, 2027</span>
                         <button class="btn--join"
-                            onclick="openRsvpModal('Mahavir Janma Kalyanak', 'Apr 14, 2026', 'events')"
-                            data-i18n="btn_join_celebration">🎊
-                            Join Celebration</button>
+                            onclick="openRsvpModal('Chovihaar Chath Saat Jatra 2027', 'Jan 8-12, 2027', 'events')"
+                            data-i18n="btn_join_celebration">🎊 Join Journey</button>
                     </div>
                 </div>
             </div>
@@ -999,76 +975,25 @@
             <div class="past-events__grid">
                 <div class="past-event-card animate-on-scroll">
                     <div class="past-event-card__header">
-                        <div class="past-event-card__icon">🏕️</div>
+                        <div class="past-event-card__icon">🛕</div>
                         <div class="past-event-card__info">
-                            <span class="past-event-card__category" data-i18n="cat_spiritual_title">Spiritual</span>
-                            <h4 class="past-event-card__title" data-i18n="past_event1_title">Spiritual Retreat 2025</h4>
-                            <span class="past-event-card__date" data-i18n="past_event1_date">December 15-17, 2025</span>
+                            <span class="past-event-card__category" data-i18n="jatra_itinerary_tag_badge">Yatra</span>
+                            <h4 class="past-event-card__title" data-i18n="past_event_jatra_title">Chovihaar Chhath Saat Jatra — 2026</h4>
+                            <span class="past-event-card__date" data-i18n="past_event_jatra_date">January 8–12, 2026</span>
                         </div>
                     </div>
-                    <p class="past-event-card__body" data-i18n="past_event1_desc">
-                        A transformative 3-day retreat with guided meditation, satsang, and self-discovery in the serene
-                        hills of Lonavala.
+                    <p class="past-event-card__body" data-i18n="past_event_jatra_desc">
+                        A transformative 5-day spiritual pilgrimage to Palitana's sacred Shatrunjay Hill. 500+ devotees
+                        climbed 3,500 sacred steps in devotion, capturing unforgettable moments of divine grace.
                     </p>
                     <div class="past-event-card__stats">
                         <div class="past-event-card__stat">
                             <span class="past-event-card__stat-icon">👥</span>
-                            <span data-i18n="past_event1_attendees">150 Attendees</span>
+                            <span data-i18n="past_event_jatra_devotees">500+ Devotees</span>
                         </div>
                         <div class="past-event-card__stat">
                             <span class="past-event-card__stat-icon">📍</span>
-                            <span data-i18n="past_event1_loc">Lonavala</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="past-event-card animate-on-scroll animate-delay-100">
-                    <div class="past-event-card__header">
-                        <div class="past-event-card__icon">🩺</div>
-                        <div class="past-event-card__info">
-                            <span class="past-event-card__category" data-i18n="cat_seva_btn">Seva</span>
-                            <h4 class="past-event-card__title" data-i18n="past_event2_title">Medical Camp Gujarat</h4>
-                            <span class="past-event-card__date" data-i18n="past_event2_date">November 12, 2025</span>
-                        </div>
-                    </div>
-                    <p class="past-event-card__body" data-i18n="past_event2_desc">
-                        Free health screenings and medicine distribution for 500+ families across 5 tribal villages in
-                        Gujarat.
-                    </p>
-                    <div class="past-event-card__stats">
-                        <div class="past-event-card__stat">
-                            <span class="past-event-card__stat-icon">👥</span>
-                            <span data-i18n="past_event2_patients">500+ Patients</span>
-                        </div>
-                        <div class="past-event-card__stat">
-                            <span class="past-event-card__stat-icon">📍</span>
-                            <span data-i18n="past_event2_loc">Vadodara</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="past-event-card animate-on-scroll animate-delay-200">
-                    <div class="past-event-card__header">
-                        <div class="past-event-card__icon">🙏</div>
-                        <div class="past-event-card__info">
-                            <span class="past-event-card__category" data-i18n="cat_festivals_title">Festival</span>
-                            <h4 class="past-event-card__title" data-i18n="past_event3_title">Paryushan 2025</h4>
-                            <span class="past-event-card__date" data-i18n="past_event3_date">August 25 - Sept 2,
-                                2025</span>
-                        </div>
-                    </div>
-                    <p class="past-event-card__body" data-i18n="past_event3_desc">
-                        Eight sacred days of fasting, prayer, and forgiveness culminating in the beautiful Kshamavani
-                        celebration.
-                    </p>
-                    <div class="past-event-card__stats">
-                        <div class="past-event-card__stat">
-                            <span class="past-event-card__stat-icon">👥</span>
-                            <span data-i18n="past_event3_devotees">2000+ Devotees</span>
-                        </div>
-                        <div class="past-event-card__stat">
-                            <span class="past-event-card__stat-icon">📍</span>
-                            <span data-i18n="past_event3_loc">Mumbai</span>
+                            <span data-i18n="past_event_jatra_loc">Palitana, Gujarat</span>
                         </div>
                     </div>
                 </div>
@@ -1105,39 +1030,27 @@
     <footer class="footer">
         <div class="container">
             <div class="footer__grid">
-                <div class="footer__brand">
+                                <div class="footer__brand">
                     <div class="footer__logo">
                         <img src="assets/images/logo.png" alt="PrabhuPremi Trust Logo" class="footer__logo-img">
                     </div>
-                    <p data-i18n="footer_about_text">
+                    <p>
                         A faith-inspired NGO rooted in Jain values, dedicated to service, compassion,
                         and spiritual growth. Give with love. Serve with purpose. Grow with faith.
                     </p>
                     <div class="footer__social">
-                        <a href="#" aria-label="Facebook">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h2V1.87c-.32-.04-1.46-.17-2.78-.17-2.78 0-4.72 1.67-4.72 4.8v3h-3v4h3v10h4v-10z" />
-                            </svg>
+                        <a href="https://www.instagram.com/prabhupremitrust/" target="_blank" rel="noopener" aria-label="Instagram" class="social--instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
                         </a>
-                        <a href="#" aria-label="Instagram">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-                            </svg>
-                        </a>
-                        <a href="#" aria-label="YouTube">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M23.5 6.19c-.27-1.03-1.08-1.83-2.11-2.11C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.39.58c-1.03.28-1.84 1.08-2.11 2.11-.58 1.89-.58 5.81-.58 5.81s0 3.92.58 5.81c.27 1.03 1.08 1.83 2.11 2.11 1.89.58 9.39.58 9.39.58s7.5 0 9.39-.58c1.03-.28 1.84-1.08 2.11-2.11.58-1.89.58-5.81.58-5.81s0-3.92-.58-5.81zM9.54 15.56V8.45L15.81 12l-6.27 3.56z" />
-                            </svg>
-                        </a>
-                        <a href="#" aria-label="WhatsApp">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.445 0 .081 5.391.079 11.99c0 2.112.552 4.17 1.598 6.01L0 24l6.149-1.613a11.825 11.825 0 005.9 1.564h.005c6.605 0 11.97-5.391 11.972-11.992a11.821 11.821 0 00-3.614-8.472z" />
-                            </svg>
+                        <a href="https://www.youtube.com/@PrabhuPremiTrust" target="_blank" rel="noopener" aria-label="YouTube" class="social--youtube"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+                        <a href="#" aria-label="WhatsApp">💬</a>
+                    </div>
+                    <div style="margin-top:0.75rem;">
+                        <a href="https://www.instagram.com/prabhupremitrust/" target="_blank" rel="noopener"
+                           style="display:inline-flex;align-items:center;gap:0.4rem;font-size:0.78rem;color:rgba(255,255,255,0.6);text-decoration:none;transition:color 0.2s;"
+                           onmouseover="this.style.color='#f09433'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                            @prabhupremitrust
                         </a>
                     </div>
                 </div>
@@ -1166,11 +1079,10 @@
                 <div class="footer__column">
                     <h4 data-i18n="nav_contact_header">Contact</h4>
                     <div class="footer__links">
-                        <p data-i18n="footer_address">📍 Mumbai, India</p>
-                        <p>📞 <a href="tel:+919876543210" style="color: inherit; text-decoration: none;">+91 98765
-                                43210</a></p>
-                        <p>✉️ <a href="mailto:info@prabhupremitrust.org"
-                                style="color: inherit; text-decoration: none;">info@prabhupremitrust.org</a></p>
+                        <p data-i18n="footer_address">📍 Charkop, Kandivali West, Mumbai – 400067</p>
+                        <p>📞 <a href="tel:+919769909299" style="color: inherit; text-decoration: none;">+91 97699 09299</a></p>
+                        <p>✉️ <a href="mailto:admin@prabhupremitrust.com"
+                                style="color: inherit; text-decoration: none;">admin@prabhupremitrust.com</a></p>
                     </div>
                 </div>
             </div>
@@ -1197,18 +1109,82 @@
                     interest</p>
             </div>
             <div class="rsvp-modal__body" id="rsvpFormContainer">
-                <!-- Form is dynamically injected by main.js -->
+                <!-- Form is dynamically injected by main.js?v=3 -->
             </div>
         </div>
     </div>
 
     <!-- Scripts -->
-    <script src="scripts/main.js"></script>
+    <script src="scripts/main.js?v=5"></script>
     <script>
-        // Countdown Timer for Featured Event (Mahavir Janma Kalyanak - April 14, 2026)
-        function updateCountdown() {
-            const eventDate = new Date('2026-04-14T07:00:00+05:30');
+        // Dynamic Events List
+        const upcomingEvents = [
+            {
+                titleKey: "event1_title",
+                descKey: "event1_desc",
+                dateKey: "event1_date_timeline",
+                locKey: "event1_loc",
+                timeKey: "event1_time",
+                dateStr: "September 8, 2026", // Fallback
+                dateIso: "2026-09-08T06:00:00+05:30"
+            },
+            {
+                titleKey: "event3_title",
+                descKey: "event3_desc",
+                dateKey: "event3_date_timeline",
+                locKey: "event3_loc",
+                timeKey: "event3_time_timeline",
+                dateStr: "January 8-12, 2027", // Fallback
+                dateIso: "2027-01-08T06:00:00+05:30"
+            }
+        ];
+
+        let currentTargetEvent = null;
+
+        function getNextEvent() {
             const now = new Date();
+            for (let i = 0; i < upcomingEvents.length; i++) {
+                if (new Date(upcomingEvents[i].dateIso) > now) {
+                    return upcomingEvents[i];
+                }
+            }
+            // If all events are in the past, return the last one or loop it (for now, just return the last)
+            return upcomingEvents[upcomingEvents.length - 1];
+        }
+
+        function updateEventUI(event) {
+            const titleEl = document.getElementById('featured_title');
+            const descEl = document.getElementById('featured_desc');
+            const dateEl = document.getElementById('featured_date');
+            const locEl = document.getElementById('featured_loc');
+            const timeEl = document.getElementById('featured_time');
+
+            if(titleEl) titleEl.setAttribute('data-i18n', event.titleKey);
+            if(descEl) descEl.setAttribute('data-i18n', event.descKey);
+            if(dateEl) dateEl.setAttribute('data-i18n', event.dateKey);
+            if(locEl) locEl.setAttribute('data-i18n', event.locKey);
+            if(timeEl) timeEl.setAttribute('data-i18n', event.timeKey);
+
+            // Re-trigger translation
+            if (window.scrollReveal && window.scrollReveal.langManager) {
+                window.scrollReveal.langManager.switchLanguage(window.scrollReveal.langManager.currentLang);
+            }
+            
+            // Update modal trigger
+            const btn = document.querySelector('.featured-event__content button');
+            if(btn) {
+                btn.setAttribute('onclick', `openRsvpModal('${event.titleKey}', '${event.dateStr}', 'events')`);
+            }
+        }
+
+        function updateCountdown() {
+            const now = new Date();
+            if (!currentTargetEvent || new Date(currentTargetEvent.dateIso) <= now) {
+                currentTargetEvent = getNextEvent();
+                updateEventUI(currentTargetEvent);
+            }
+
+            const eventDate = new Date(currentTargetEvent.dateIso);
             const diff = eventDate - now;
 
             if (diff > 0) {
@@ -1221,6 +1197,11 @@
                 document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
                 document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
                 document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            } else {
+                document.getElementById('days').textContent = "0";
+                document.getElementById('hours').textContent = "00";
+                document.getElementById('minutes').textContent = "00";
+                document.getElementById('seconds').textContent = "00";
             }
         }
 

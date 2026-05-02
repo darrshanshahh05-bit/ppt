@@ -1,0 +1,8 @@
+node_modules/
+.DS_Store
+*.log
+test_dom.js
+check_divs.py
+optimize_images.py
+package-lock.json
+package.json
